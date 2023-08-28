@@ -1,0 +1,10 @@
+.logo-size{
+    height:65px;
+}
+.theme-color{
+    color: var(--theme-color);
+}
+
+.theme-color:hover{
+ color: blue !important;
+}

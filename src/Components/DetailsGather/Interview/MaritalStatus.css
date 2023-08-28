@@ -1,0 +1,113 @@
+@media(max-width:800px){
+  .status ul{
+    display: grid;
+    grid-template-columns:repeat(2,0.1fr) !important;
+  }
+}
+
+.status ul {
+    list-style-type: none;
+    justify-content: center;
+    display: grid;
+    grid-template-columns:repeat(3,0.1fr);
+  }
+  
+  .status li {
+    display: inline-block;
+  }
+
+  .status ul li p{
+    text-align: center;
+  }
+  
+  .status input[type="radio"][id^="cb"] {
+    display: none;
+  }
+  .status .img:hover{
+    box-shadow: 3px 3px 10px 0px #00000031;
+  }
+  .status .single{
+    background-image: url(../../../assets/images/single.png);
+    background-size: cover;
+  }
+  .status .single:hover{
+    background-image: url(../../../assets/images/single.gif);
+    background-size: cover;
+  }
+  .status .married{
+    background-image: url(../../../assets//images/married.png);
+    background-size: cover;
+  }
+  .status .married:hover{
+    background-image: url(../../../assets//images/married.gif);
+    background-size: cover;
+  }
+  .status .livin{
+    background-image: url(../../../assets//images/relation.png);
+    background-size: cover;
+  }
+  .status .livin:hover{
+    background-image: url(../../../assets//images/livin.gif);
+    background-size: cover;
+  }
+  .status .widow{
+    background-image: url(../../../assets//images/widow.png);
+    background-size: cover;
+  }
+  .status .widow:hover{
+    background-image: url(../../../assets//images/widow.gif);
+    background-size: cover;
+  }
+  .status .divorce{
+    background-image: url(../../../assets//images/divorce.png);
+    background-size: cover;
+  }
+  .status .divorce:hover{
+    background-image: url(../../../assets//images/divorce.gif);
+    background-size: cover;
+  }
+  .status .separated{
+    background-image: url(../../../assets//images/separated.png);
+    background-size: cover;
+  }
+  .status .separated:hover{
+    background-image: url(../../../assets//images/separated.gif);
+    background-size: cover;
+  }
+  .status label {
+    border: 2px solid rgb(110 62 62 / 14%);
+    border-radius:10px ;
+    position: relative;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+
+  }
+  
+  
+  .status label .img {
+    height: 100px;
+    box-shadow: 0px 0px 5px 0px #00000031;
+    width: 100px;
+    border-radius:10px;
+    transition-duration: 0.7s;
+    transform-origin: 50% 50%;
+  }
+  
+  .status :checked + label {
+    border:0px;
+  }
+  
+  
+  .status :checked + label .img {
+    transform: scale(1.1);
+    box-shadow: 3px 3px 10px 0px #33cccc9c;
+    z-index: -1;
+    transition-duration: 0.5s;
+    background: #47d1d152;
+    background-image: url("../../../assets//images/checked.png");
+    background-size: cover;
+  }
+
+   

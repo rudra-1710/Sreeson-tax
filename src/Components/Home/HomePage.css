@@ -1,0 +1,84 @@
+:root{
+    --theme-colr: #00c7ff;
+}
+
+.image-logo img{
+    width: 100px;
+    height: auto;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+.greet{
+    font-weight: 400;
+}
+.refil{
+    background-color: #ebf8fe;
+    padding: 10px;
+    border-top: 2px solid #00c7ff;
+}
+.returns-open{
+    border: 2px solid rgba(62, 62, 62, 0.507);
+}
+.refund-data{
+    border-bottom: 2px solid rgba(148, 148, 148, 0.447);
+}
+.return-button{
+    background-color: var(--theme-colr);
+    color: white;
+}
+.return-butn{
+    border: 1px solid var(--theme-colr);
+    background-color: white;
+    color: var(--theme-colr);
+}
+.theme-color{
+    color: var(--theme-colr);
+}
+.rename-copy{
+    color: var(--theme-colr);
+    font-weight: 600;
+}
+
+.language-icon{
+    width: 36px;
+    height:36px;
+    background-image: url(../../assets/images/language1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.language-iconhover:hover .language-icon{
+    background-image: url(../../assets/images/language.gif);
+    
+}
+.question-icon{
+    width: 35px;
+    height:35px;
+    background-image: url(../../assets/images/information.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.question-iconhover:hover .question-icon{
+    background-image: url(../../assets/images/information.gif);
+}
+.language-selector{
+    border: 0px !important;
+    cursor:pointer;
+    font-size: 13px;
+    padding: 0.375rem 2.25rem 0.375rem 0.175rem !important;
+}
+.language-selector:focus{
+    box-shadow: none !important;
+}
+
+.language-selector .option{
+  padding: 50px 10px !important;
+}
+.language-selector option{
+    font-size:17px;
+    padding: 50px 10px !important;
+  }

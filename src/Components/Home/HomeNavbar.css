@@ -1,0 +1,120 @@
+:root{
+  --navText:#9b9b9b;
+  --yearText:#959595;
+  --theme-navbar:#172153;
+  
+}
+
+.Home-sidebar {
+    color: var(--yearText);
+    height: 100vh;
+    /* padding: 20px; */
+    
+  }
+.taxyear{
+  color: var(--yearText);
+  font-weight: 600;
+  font-size: 12px;
+}
+p{
+  font-size: 12px;
+}
+  .main-logo{
+    height: 40px;
+    width: auto;
+  }
+  .nav-text{
+    color: white;
+  }
+  .accordion-button{
+    padding-right: 10px !important;
+  }
+  .accordion-button:focus{
+    box-shadow: none;
+    outline: 0;
+    background-color: var(--navText) !important;
+  }
+
+  .accordion-item:last-of-type .accordion-collapse{
+    border-radius: 0 !important;
+  }
+  .accordion{
+  background-color: var(--navText);
+  --bs-accordion-btn-icon: url("../../assets/images/down-arrow.png");
+  --bs-accordion-btn-active-icon: url("../../assets/images/up-arrow.png");
+  border: 0px !important;
+  --bs-accordion-border-color:none !important;
+  --bs-accordion-btn-icon-width:1rem !important;
+  --bs-accordion-btn-icon-color:white !important
+}
+
+  .tax-refund .accordian , .tax-refund .accordion-button  {
+    font-weight: 500;
+    border-radius: 0 !important;
+    border: 0px !important;
+    background-color:var(--theme-navbar) !important
+}
+  .accordion-button:not(.collapsed) {
+    background-color: var(--navText) !important;
+    color: white !important;
+  }
+  .tax-refund .nav-text{
+    font-size: 12px !important;
+    font-weight: 400;
+    color: white;
+  }
+.hrline{
+  color: var(--yearText);
+}
+  /* .accordion{
+    background-color: var(--navText);
+    border: 0px !important;
+    --bs-accordion-btn-icon: url("../../assets/images/down-arrow.png");
+    --bs-accordion-btn-active-icon: url("../../assets/images/up-arrow.png");
+    --bs-accordion-border-color:none !important;
+    --bs-accordion-btn-icon-width:1rem !important;
+    --bs-accordion-btn-icon-color:white !important
+  }
+  .accordion-item:last-of-type .accordion-collapse{
+    border-radius: 0 !important;
+  }
+  .accordian , .accordion-button  {
+    padding: 7px !important;
+    font-weight: 500;
+    border-radius: 0 !important;
+    border: 0px !important;
+    background-color: var(--navText);
+  }
+.nav-text{
+  color: white;
+}
+  .accordion-button:focus{
+    box-shadow: none;
+    outline: 0;
+    background-color: var(--navText);
+  }
+  .accordion-button:not(.collapsed){
+    background-color: var(--navText);
+  }
+  .accordion-item{
+    border: 0px !important;
+  } */
+  .Newreturn{
+    color: var(--yearText) ;
+  }
+  .hrline{
+    color: var(--yearText);
+  }
+  .hrline hr{
+    width: 100%;
+    opacity: .80;
+  }
+
+  .mobile-view{
+    display: none;
+  }
+
+  .menu-icon{
+    font-size: 25px;
+  }
+
