@@ -52,5 +52,8 @@
       .mobile-view{
         display: block !important;
       }
+      .home-navbar2{
+        display: none !important;
+      }
 }
 
