@@ -3,6 +3,7 @@ import {Row, Col} from "react-bootstrap"
 import "../../Home/Home.css"
 import InterviewHomepage from './InterviewHomepage'
 import InterviewNavbar from './InterviewNavbar'
+import Province from '../../ProvinceOfResidence/Province'
 
 
 const Interview = () => {
@@ -17,7 +18,8 @@ const Interview = () => {
             
         </Col>
         <Col >
-            <InterviewHomepage />
+            {/* <InterviewHomepage /> */}
+            <Province />
         </Col>
     </Row>
     </>

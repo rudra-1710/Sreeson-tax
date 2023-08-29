@@ -15,10 +15,10 @@ const App = () => {
         </Routes>
     </BrowserRouter> */}
     <div style={{height:'100%'}}>
-      <Home />
+      {/* <Home /> */}
       {/* <Login_form /> */}
       {/* <Sign_up /> */}
-      {/* <Interview /> */}
+      <Interview />
     </div>
     </>
   )
