@@ -8,6 +8,13 @@ import Manitoba from './Manitoba';
 import Brunswick from './Brunswick';
 import NewfoundLand from './NewfoundLand';
 import Northwest from './Northwest';
+import Nova from './Nova';
+import Nunavut from './Nanavut';
+import Ontario from './Ontario';
+import Prince from './Prince';
+import Quebec from './Quebec';
+import Saskatchewan from './Saskatchewan';
+import Yukon from './Yukon';
 
 const Province = () => {
   return (
@@ -50,7 +57,14 @@ const Province = () => {
           {/* <Manitoba />   */}
           {/* <Brunswick /> */}
           {/* <NewfoundLand /> */}
-          <Northwest />
+          {/* <Northwest /> */}
+          {/* <Nova /> */}
+          {/* <Nunavut /> */}
+          {/* <Ontario /> */}
+          {/* <Prince /> */}
+          {/* <Quebec /> */}
+          {/* <Saskatchewan /> */}
+          <Yukon />
           <div className='text-center bottom-1 left-0 right-0'>
         <div className='my-5'>
           <p>License Agreement Privacy Statement Cobrowse</p>
