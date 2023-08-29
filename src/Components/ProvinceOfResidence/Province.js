@@ -2,6 +2,12 @@ import React from 'react'
 import Helpbar from '../CommonComponents/Helpbar'
 import { Container, Nav } from 'react-bootstrap';
 import "./Province.scss"
+import Alberta from './Alberta';
+import British from './British';
+import Manitoba from './Manitoba';
+import Brunswick from './Brunswick';
+import NewfoundLand from './NewfoundLand';
+import Northwest from './Northwest';
 
 const Province = () => {
   return (
@@ -37,6 +43,20 @@ const Province = () => {
              </select>
             </div>
             </div>
+        </div>
+        <div>
+          {/* <Alberta /> */}
+          {/* <British /> */}
+          {/* <Manitoba />   */}
+          {/* <Brunswick /> */}
+          {/* <NewfoundLand /> */}
+          <Northwest />
+          <div className='text-center bottom-1 left-0 right-0'>
+        <div className='my-5'>
+          <p>License Agreement Privacy Statement Cobrowse</p>
+          <p>© 2023 Intuit Canada ULC or one of its affiliates. All rights reserved.</p>
+        </div>
+      </div>
         </div>
 </Container>
   )

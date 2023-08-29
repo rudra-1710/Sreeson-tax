@@ -1,0 +1,89 @@
+.territory{
+    height: 80px;
+    width: 80px;
+    background-image: url("../../assets//images/territory.jpg");
+    background-size: cover;
+}
+
+.territory:hover{
+    background-image: url("../../assets/images/territory.gif");
+}
+
+.singellogo{
+    width: 100px;
+    height: 100px;
+}
+.alberta ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .alberta li {
+    display: flex;
+    justify-content: center;
+  }
+
+  .alberta ul li p{
+    text-align: center;
+  }
+  
+  
+
+  .alberta .imgbar:hover{
+    box-shadow: 3px 3px 10px 0px #00000031;
+  }
+  .alberta label {
+    // border: 2px solid rgb(110 62 62 / 14%);
+    border-radius:10px ;
+    position: relative;
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+
+  }
+  
+  
+  .alberta label .imgbar {
+    height: 50px;
+    box-shadow: 0px 0px 5px 0px #00000031;
+    width: 220px;
+    border-radius:10px;
+    transition-duration: 0.7s;
+    transform-origin: 50% 50%;
+  }
+  
+  .alberta :checked + label {
+    border:0px;
+  }
+  
+  .alberta input[type="radio"][id^="Alberta"] {
+    display: none;
+  }
+  .alberta :checked + label .imgbar {
+    box-shadow: 2px 2px 5px 0px #33cccc9c;
+    z-index: -1;
+    transition-duration: 0.5s;
+    background: #47d1d152 !important;
+    background-size: cover;
+  }
+
+  .date-input{
+    border-radius: 10px;
+    border: 2px solid rgb(110 62 62 / 14%);
+    padding: 10px;
+    width: 220px;
+    box-shadow: 0px 0px 5px 0px #00000031;
+  }                                               
+
+  .continue-btn{
+    border: 2px solid rgb(110 62 62 / 14%);
+    color: white;
+    background-color:#26b7b7;
+  }
+  .continue-btn:hover{
+    background-color:#08a8a8 ;
+    color: white;
+  }
