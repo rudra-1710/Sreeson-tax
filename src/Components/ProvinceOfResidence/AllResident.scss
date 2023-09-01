@@ -1,0 +1,60 @@
+
+.NonResident input[type="radio"][id^="NonResident"] {
+    display: none;
+  }
+  .NonResident input[type="radio"][id^="resideNonResident"] {
+    display: none;
+  }
+
+  .NonResidentS216 input[type="radio"][id^="NonResidentS216"] {
+    display: none;
+  }
+  .NonResidentS216 input[type="radio"][id^="resideNonResidentS216"] {
+    display: none;
+  }
+  .NonResidentS217 input[type="radio"][id^="NonResidentS217"] {
+    display: none;
+  }
+  .NonResidentS217 input[type="radio"][id^="resideNonResidentS217"] {
+    display: none;
+  }
+
+  .DeemedResident input[type="radio"][id^="DeemedResident"] {
+    display: none;
+  }
+  
+.DeemedResident input[type="radio"][id^="resideDeemedResident"] {
+  display: none;
+}
+   .resident label {
+    padding: 6px !important;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1921568627) !important;
+  }
+   .resident label .imgbar{
+    box-shadow: none;
+  }
+  .resident label .imgbar:hover{
+    box-shadow:  none !important;
+  }
+   .resident label:hover{
+    box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.1921568627) !important;
+  }
+  
+ .resident :checked + label {
+    box-shadow: 2px 2px 5px 0px rgba(51, 204, 204, 0.6117647059) !important;
+    z-index: -1;
+    transition-duration: 0.5s;
+    background: rgba(71, 209, 209, 0.3215686275) !important;
+}
+ 
+ .resident :checked + label .imgbar{
+    box-shadow: none !important;
+    background: rgba(255, 255, 255, 0) !important;
+}
+  .date-input-NonResident{
+    border-radius: 10px;
+    border: 2px solid rgb(110 62 62 / 14%);
+    padding: 10px;
+    width: 250px;
+    box-shadow: 0px 0px 5px 0px #00000031;
+  }

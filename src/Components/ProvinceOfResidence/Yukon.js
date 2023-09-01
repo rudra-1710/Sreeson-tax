@@ -94,7 +94,7 @@ const Yukon = () => {
             <div>
             <div className='d-flex justify-content-center my-4'>
             <div>
-        <label for="province" className='my-2'><p>Name of self-governing First Nation</p></label><br />
+        <label for="province" className='my-2'><p>Name of self-governing First Nation</p></label>
          <select id="yukon" name='yukon' className='my-2 date-input-yukon' >
            <option value="select">--select--</option>
            <option value="Carcross/Tagish">Carcross/Tagish</option>

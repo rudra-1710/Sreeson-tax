@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 
 
-const Alberta = () => {
+const Alberta = ({changeDt}) => {
 
   const [isMove,setIsmove] = useState(false);
 
@@ -13,8 +13,10 @@ const Alberta = () => {
     console.log(event.target.value)
     if(event.target.value === "Yes"){
       setIsmove(true)
+      changeDt(true)
     }else{
       setIsmove(false)
+      changeDt(false)
     }
   }
 

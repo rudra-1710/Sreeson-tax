@@ -1,0 +1,90 @@
+.tax-return{
+
+ input[type="radio"][id^="TaxReturn"] {
+    display: none;
+  }
+   .myself{
+    background-image: url("../../assets/images/myself.jpg");
+    background-size: cover;
+  }
+   .myself:hover{
+    background-image: url('../../assets/images/myself.gif');
+    background-size: cover;
+  }
+  .corporate{
+    background-image: url("../../assets/images/corporate.jpg");
+    background-size: cover;
+  }
+   .corporate:hover{
+    background-image: url('../../assets/images/corporate.gif');
+    background-size: cover;
+  }
+  .others{
+    background-image: url("../../assets/images/others.jpg");
+    background-size: cover;
+  }
+   .others:hover{
+    background-image: url('../../assets/images/others.gif');
+    background-size: cover;
+  }
+   label {
+    border: 2px solid rgb(110 62 62 / 14%);
+    border-radius:10px ;
+    position: relative;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+
+  }
+  
+  
+   label .returnimg {
+    height: 100px;
+    box-shadow: 0px 0px 5px 0px #00000031;
+    width: 100px;
+    border-radius:10px;
+    transition-duration: 0.7s;
+    transform-origin: 50% 50%;
+  }
+  
+   :checked + label {
+    border:0px;
+  }
+  
+  
+   :checked + label .returnimg {
+    transform: scale(1.1);
+    box-shadow: 3px 3px 10px 0px #33cccc9c;
+    z-index: -1;
+    transition-duration: 0.5s;
+    background: #47d1d152;
+    background-image: url("../../assets/images/checked.png");
+    background-size: cover;
+  }
+  @media(max-width:800px){
+     ul{
+      display: grid;
+      grid-template-columns:repeat(2,0.1fr) !important;
+    }
+  }
+  
+   ul {
+      list-style-type: none;
+      justify-content: center;
+      display: grid;
+      grid-template-columns:repeat(3,0.1fr);
+    }
+    
+     li {
+      display: inline-block;
+    }
+  
+     ul li p{
+      text-align: center;
+    }
+    
+     .returnimg:hover{
+      box-shadow: 3px 3px 10px 0px #00000031;
+    }
+}
