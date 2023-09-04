@@ -60,6 +60,7 @@ const InterviewNavbar = () => {
         <Accordion.Header className='rounded-0 accordion '><p className='nav-text'>My Info</p></Accordion.Header>
         <Accordion.Body className='accordian rounded-0 p-0'>
             <div className='nav-links'>
+            <Nav.Link href="#" className='rounded-0'><p className='nav-text rounded-0'>Maritial status</p></Nav.Link>
                 <Nav.Link href="#" className='rounded-0'><p className='nav-text rounded-0'>view all tax returns</p></Nav.Link>
                 <Nav.Link href="#" className='rounded-0'><p className='nav-text rounded-0'>Province of residence</p></Nav.Link>
 

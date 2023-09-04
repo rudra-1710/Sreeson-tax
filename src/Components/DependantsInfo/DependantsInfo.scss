@@ -1,0 +1,14 @@
+.dependent{
+    .dependent-logo{
+        height: 80px;
+    width: 80px;
+    background-image: url("../../assets//images/dependent.jpg");
+    background-size: cover;
+    }
+    .dependent-logo:hover{
+        background-image: url('../../assets/images/dependent.gif');
+    }
+    input[type="radio"][id^="Dependant"] {
+        display: none;
+      }
+}

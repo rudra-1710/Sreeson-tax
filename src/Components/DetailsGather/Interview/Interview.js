@@ -4,6 +4,14 @@ import "../../Home/Home.css"
 import InterviewHomepage from './InterviewHomepage'
 import InterviewNavbar from './InterviewNavbar'
 import Province from '../../ProvinceOfResidence/Province'
+import Helpbar from '../../CommonComponents/Helpbar'
+import TaxReturnType from '../../TaxReturnType/TaxReturnType'
+import CanadianCitizenship from '../../CanadianCitizenship/CanadianCitizenship'
+import Contact from '../../ContactInformation/Contact'
+import DependantsInfo from '../../DependantsInfo/DependantsInfo'
+import PersonalInfo from '../../PersonalInfo/PersonalInfo'
+import WhatsNew from '../../WhatsNew/WhatsNew'
+import GetStartedForm from '../../GetStarted/GetStartedForm'
 
 
 const Interview = () => {
@@ -18,8 +26,22 @@ const Interview = () => {
             
         </Col>
         <Col >
-            {/* <InterviewHomepage /> */}
+        <Helpbar />
+        <TaxReturnType />
+            <InterviewHomepage />
             <Province />
+            <CanadianCitizenship />
+            <Contact />
+            <DependantsInfo />
+            <PersonalInfo />
+            <WhatsNew />
+            <GetStartedForm />
+            <div className='text-center bottom-1 left-0 right-0'>
+        <div className='my-5'>
+          <p>License Agreement Privacy Statement Cobrowse</p>
+          <p>© 2023 Sreeson Canada ULC or one of its affiliates. All rights reserved.</p>
+        </div>
+      </div>
         </Col>
     </Row>
     </>
