@@ -363,8 +363,10 @@ function Contact() {
                     </Form.Group>)
                     })}
                     </div>
-                    <input type="checkbox" name="mailaddress" id="mailaddress" onClick={mailAddressHandler}/>
+                   <div className='d-flex align-items-center'>
+                   <input type="checkbox" name="mailaddress" id="mailaddress" className='m-1' onClick={mailAddressHandler}/>
                 <label for="mailaddress"> <p>The mailing address above is where Icurrently live</p></label>
+                   </div>
                 <Form.Group  md="4" className='my-4' controlId="validationCustom01" >
                         <Form.Label>
                             <p>Hemanth's email adress</p>
@@ -413,7 +415,8 @@ function Contact() {
                 </div>
                 {isMailChange &&
                     <div>
-                        hello
+                       <p>You can proceed using the NETFILE service but, you must notify the CRA regarding the change of mailing adress before you file your return.</p>
+                        <p className='my-2'>You can update your info through the CRA's My account service or by calling at <b>1-800-959-8281</b></p>
                     </div>
                 }
                 </div>
@@ -421,7 +424,7 @@ function Contact() {
                   <div className='d-flex justify-content-between'>
                     <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
                       back</div>
-                    <div className='btn continue-btn'>Continue</div>
+                    <button className='btn continue-btn'>Continue</button>
                   </div>
                 </Form>
                 </div>
