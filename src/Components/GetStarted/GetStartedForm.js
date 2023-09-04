@@ -4,12 +4,27 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import "./GetStarted.scss"
 import {faLock, faAngleLeft, faUser, faMoneyCheckDollar} from '@fortawesome/free-solid-svg-icons';
 function GetStartedForm() {
-  const prov=["Alberta","British Columbia"];
+  const prov=["Alberta","British Columbia", "Manitoba", "New Brunswick", "Newfounded and Labrador", "Nova Scotia ", "Ontario", "Prince Edward island", "Quebec","Saskatchwan","Yukon","Nunavut"];
   const [isWorkYes, setisWorkYes] = useState(false);
   const [isWorkNo, setisWorkNo] = useState(false);
-  const [wasEmployed, setwasEmployed] = useState(false)
+  const [wasEmployed, setwasEmployed] = useState(false);
+  const [showT4, setshowT4] = useState(false)
+  const [isExp, setisExp] = useState(false);
+  const[isSelf, setisSelf] = useState(false);
+  const [isUnEmp, setisUnEmp] = useState(false)
+  const [isWork, setisWork] = useState(false)
+  const [isCasual, setisCasual] = useState(false)
+  const [isTraining, setisTraining] = useState(false)
+  const [isNoWork, setisNoWork] = useState(false)
+  const [isNoCasual, setisNoCasual] = useState(false)
+  const [isNoTraining, setisNoTraining] = useState(false)
+  const [isScholar,setisScholar]=  useState(false)
+  const [isDisability, setisDisability] = useState(false)
+  const [isAdvance, setisAdvance] = useState(false)
+  const [isOtherIncome, setisOtherIncome] = useState(false)
+
+
   const workHandler=(event)=>{
-    console.log(event.target.value)
     if(event.target.value === "Yes"){
       setisWorkYes(true)
       setisWorkNo(false)
@@ -19,13 +34,110 @@ function GetStartedForm() {
     }
   }
   const workoneHandler=(event)=>{
-    console.log(event.target.checked)
     if(event.target.checked === true){
       setwasEmployed(true)
     }else{
       setwasEmployed(false)
     }
   }
+  const workT4Handler = (event)=>{
+    if(event.target.checked === true){
+      setshowT4(true)
+    }else{
+      setshowT4(false)
+    }
+  }
+  const experinceHandler = (event)=>{
+    if(event.target.value === "Yes"){
+      setisExp(true)
+    }else{
+      setisExp(false)
+    }
+  }
+  const selfEmployHandler =(event)=>{
+    if(event.target.checked === true){
+      setisSelf(true)
+    }else{
+      setisSelf(false)
+    }
+  }
+  const unEmployHandler = (event)=>{
+    if(event.target.checked === true){
+      setisUnEmp(true)
+    }else{
+      setisUnEmp(false)
+    }
+  }
+  const workerHandler = (event)=>{
+    if(event.target.checked === true){
+      setisWork(true)
+    }else{
+      setisWork(false)
+    }
+  }
+  const casualHandler = (event)=>{
+    if(event.target.checked === true){
+      setisCasual(true)
+    }else{
+      setisCasual(false)
+    }
+  }
+  const workTrainingHandler = (event)=>{
+    if(event.target.checked === true){
+      setisTraining(true)
+    }else{
+      setisTraining(false)
+    }
+  }
+  const noworkerHandler = (event)=>{
+    if(event.target.checked === true){
+      setisNoWork(true)
+    }else{
+      setisNoWork(false)
+    }
+  }
+  const nocasualHandler = (event)=>{
+    if(event.target.checked === true){
+      setisNoCasual(true)
+    }else{
+      setisNoCasual(false)
+    }
+  }
+  const noworkTrainingHandler = (event)=>{
+    if(event.target.checked === true){
+      setisNoTraining(true)
+    }else{
+      setisNoTraining(false)
+    }
+  }
+   const scholasticHandler  = (event)=>{
+    if(event.target.checked === true){
+      setisScholar(true)
+    }else{
+      setisScholar(false)
+    }
+  }
+  const disabilityHandler = (event)=>{
+    if(event.target.checked === true){
+      setisDisability(true)
+    }else{
+      setisDisability(false)
+    }
+  }
+  const advanceHandler = (event)=>{
+    if(event.target.checked === true){
+      setisAdvance(true)
+    }else{
+      setisAdvance(false)
+    }
+  } 
+  const otherIncomeHandler =  (event)=>{
+    if(event.target.value === "Yes"){
+      setisOtherIncome(true)
+    }else{
+      setisOtherIncome(false)
+    }
+  } 
   return (
    
     <Container>
@@ -55,7 +167,7 @@ function GetStartedForm() {
        <Form.Check className="my-3"  label="Yes" value="Yes" name="work" type="radio" id="workYes"/>
         <Form.Check className="my-3"  label="No" value="No" name="work" type="radio" id="workYes"/>
        </div>
-
+      <div>
         {/* if yes */}
         {isWorkYes && <ul>
           <li>What kind of work? Check all  that apply. How do I know these apply to me?
@@ -65,12 +177,14 @@ function GetStartedForm() {
                 {wasEmployed && <ul>
                     <li>
                       
-                         <Form.Check className="my-3"  label={<p><a href="#" className='pe-1'>T4</a>- Employement Income</p>} name="worktype2" type="checkbox" id="worktype2"/>
-                         <ul>
-                            <li>
-                            <Form.Check className="my-3"  label={<p>I worked in Quebec and received a Releve 1 slip</p>} name="worktype2-1" type="checkbox" id="worktype2-1"/>
-                            </li>
-                         </ul>
+                         <Form.Check className="my-3" onClick={workT4Handler} label={<p><a href="#" className='pe-1'>T4</a>- Employement Income</p>} name="worktype2" type="checkbox" id="worktype2"/>
+                        {showT4 &&
+                           <ul>
+                           <li>
+                           <Form.Check className="my-3"  label={<p>I worked in Quebec and received a Releve 1 slip</p>} name="worktype2-1" type="checkbox" id="worktype2-1"/>
+                           </li>
+                        </ul>
+                        }
 
                     </li>
                     <li>
@@ -90,9 +204,11 @@ function GetStartedForm() {
                     </li>
                     <li>
                         Did youy have expenses related to your employment?
-                        <Form.Check 
+                       <div onChange={experinceHandler}>
+                       <Form.Check 
                         name="expenses"
                         label="Yes"
+                        value="Yes"
                         className='my-3'
                         type='radio'
                         id="expenses"
@@ -100,12 +216,14 @@ function GetStartedForm() {
                          <Form.Check 
                         name="expenses"
                         label="No"
+                        value="No"
                         className='my-3'
                         type="radio"
                         id="expenses"
                         />
+                       </div>
                         {/* if yes */}
-                        <ul>
+                        {isExp && <ul>
                             What kind of expenses? Check all that apply.
                             <li>
                                 <Form.Check className='my-3' type='checkbox' label={<p >I had <a className='ps-1'>employment expenses</a></p>} id="expense1" />
@@ -122,15 +240,16 @@ function GetStartedForm() {
                             <Form.Check className='my-3' type='checkbox' label={<p >I have shares or stock in my company and have <a className='px-1'>deferred stock option</a>benifts, or paid tax on excess employees profit-sharing plan</p>} id="expense24" />
                             </li>
                             <li></li>
-                        </ul>
+                        </ul>}
                         {/* if noo */}
                     </li>
                  </ul>}
               </li>
+                            {/* self employe */}
               <li>
-                <Form.Check name="selfemploye"  type="checkbox" label={<div className='d-flex'> I was <a className='px-1'>self employed</a>(freelancer, contracter, independent worker, professional, commiision-based, farming, fishiing)</div>} />
-                <ul>
-                  <p>Check that any apply</p>
+                <Form.Check name="selfemploye" onClick={selfEmployHandler}  type="checkbox" label={<div className='d-flex'> I was <a className='px-1'>self employed</a>(freelancer, contracter, independent worker, professional, commiision-based, farming, fishiing)</div>} />
+                {isSelf && <ul>
+                  <p className='my-3'>Check that any apply</p>
                   <li>
                     <Form.Check className='my-3' name="t4" type="checkbox" id="t4" label={<p > All my self-employment income is reported on a <a href='#' className='px-1'>T4 or T4slip</a><FontAwesomeIcon className='px-1' icon={faLock} /> </p>} />
                     <p className='my-3'>Note: Subcontractors generally have their income reported on these slips.</p>
@@ -143,43 +262,47 @@ function GetStartedForm() {
                     })}
                     </select>
                   </li>
-                </ul>
+                </ul>}
               </li>
+                            {/* un employee */}
               <li>
-                <Form.Check type="checkbox" className='my-3' label={<div className='d-flex'> I received <a className='px-1' href='#'> unemployment, maternity or paternity leave</a>, CERB or other benifits</div>} />
-                <ul>
+                <Form.Check type="checkbox" onClick={unEmployHandler} className='my-3' label={<div className='d-flex'> I received <a className='px-1' href='#'> unemployment, maternity or paternity leave</a>, CERB or other benifits</div>} />
+                {isUnEmp && <ul>
                     <li>
                        <p className='my-2'> check any that apply</p>
                        <Form.Check className="my-3"  label={<p ><a href='#'  className='pe-1'>TAE</a> - Employement insurance Benifits</p>} name="worktype31" type="checkbox" id="worktype31"/>
                          <Form.Check className="my-3"  label={<p ><a href='#' className='pe-1'>TA4</a> - Pension, retirement, annuity, and Others income -  Including CERB</p>} name="worktype32" type="checkbox" id="worktype32"/>
                     </li>
-                 </ul>
+                 </ul>}
               </li>
+                    {/* worker */}
               <li>
-              <Form.Check type="checkbox" className='my-3' label={<div className='d-flex'> I received <a className='px-1' href='#'> workers' compensition benifits </a>or <a className='px-1' href="#"> social assistance</a></div>} />
-                 <ul>
+              <Form.Check type="checkbox" onClick={workerHandler} className='my-3' label={<div className='d-flex'> I received <a className='px-1' href='#'> workers' compensition benifits </a>or <a className='px-1' href="#"> social assistance</a></div>} />
+                 {isWork && <ul>
                     <li>
                        <p className='my-2'> check any that apply</p>
                        <Form.Check className="my-3"  label={<p ><a href='#'  className='pe-1'>T5007</a> - WCB or social assistance Benifts, Senior supplement</p>} name="worktype2" type="checkbox" id="worktype2"/>
                     </li>
-                 </ul>
+                 </ul>}
               </li>
+                    {/* casual */}
               <li>
-              <Form.Check type="checkbox" className='my-3' label={<div className='d-flex'> I received tip or did<a className='px-1' href='#'> casual labour  </a> will not be getting a T4 </div>} />
-                 <ul>
+              <Form.Check type="checkbox" onClick={casualHandler} className='my-3' label={<div className='d-flex'> I received tip or did<a className='px-1' href='#'> casual labour  </a> will not be getting a T4 </div>} />
+                 {isCasual && <ul>
                     <li>
                        <p className='my-2'> Even if you did not recieve a T-slip for tip income, you should report it on your tax return <a className="px-1">Learmn more</a></p>
                     </li>
-                 </ul>
+                 </ul>}
               </li>
+              {/* training work */}
               <li>
-                <Form.Check className="my-3"  label="I participsted in a work training program" name="worktype5" type="checkbox" id="worktype5"/>
-                 <ul>
+                <Form.Check onClick={workTrainingHandler} className="my-3"  label="I participsted in a work training program" name="worktype5" type="checkbox" id="worktype5"/>
+                 {isTraining && <ul>
                     <li>
                        <p className='my-2'> check any that apply</p>
                          <Form.Check className="my-3"  label={<p ><a href='#' className='pe-1'>T4E</a>- Employment insurence Benifits</p>}  name="worktype6" type="checkbox" id="worktype6"/>
                     </li>
-                 </ul>
+                 </ul>}
               </li>
             </ul>
           </li>
@@ -190,37 +313,100 @@ function GetStartedForm() {
           <li>Do any of these apply for you?
             <ul>
               <li>
-                <Form.Check className="my-3"  label="I recived workers' compensation benifits or social assistance" name="worktype" type="checkbox" id="worktype"/>
-                 <ul>
+                <Form.Check onClick={noworkerHandler} className="my-3"  label="I recived workers' compensation benifits or social assistance" name="worktype" type="checkbox" id="worktype"/>
+                 {isNoWork && <ul>
                     <li>
                        <p className='my-2'> check any that apply</p>
                          <Form.Check className="my-3"  label={<p><a href="#" className='pe-1'>T5007-WCB</a> or social assistance Benifits, Senior supplement</p>} name="worktype2" type="checkbox" id="worktype2"/>
 
                     </li>
-                 </ul>
+                 </ul>}
               </li>
               <li>
-              <Form.Check type="checkbox" className='my-3' label={<div className='d-flex'> I received <a className='px-1' href='#'> unemployment, maternity or paternity leave</a>, CERB or other benifits</div>} />
-                 <ul>
+              <Form.Check onClick={nocasualHandler} type="checkbox" className='my-3' label={<div className='d-flex'> I received <a className='px-1' href='#'> unemployment, maternity or paternity leave</a>, CERB or other benifits</div>} />
+                 {isNoCasual && <ul>
                     <li>
                        <p className='my-2'> check any that apply</p>
                        <Form.Check className="my-3"  label={<p ><a href='#'  className='pe-1'>TAE</a> - Employement insurance Benifits</p>} name="worktype2" type="checkbox" id="worktype2"/>
                          <Form.Check className="my-3"  label={<p ><a href='#' className='pe-1'>TA4</a> - Pension, retirement, annuity, and Others income -  Including CERB</p>} name="worktype4" type="checkbox" id="worktype4"/>
                     </li>
-                 </ul>
+                 </ul>}
               </li>
               <li>
-                <Form.Check className="my-3"  label="I participsted in a work training program" name="worktype5" type="checkbox" id="worktype5"/>
-                 <ul>
+                <Form.Check onClick={noworkTrainingHandler} className="my-3"  label="I participsted in a work training program" name="worktype5" type="checkbox" id="worktype5"/>
+                 {isNoTraining && <ul>
                     <li>
                        <p className='my-2'> check any that apply</p>
                          <Form.Check className="my-3"  label={<p ><a href='#' className='pe-1'>T4E</a>- Employment insurence Benifits</p>}  name="worktype6" type="checkbox" id="worktype6"/>
                     </li>
-                 </ul>
+                 </ul>}
               </li>
             </ul>
           </li>
         </ul>}
+        </div>
+<div>
+  <b className='my-3'>Hemanth, did you have <a href='#'>other income</a> not yet mentioned, such as: scholastic, foreign, disability, alimony, child support, death benifits, or Canada workers benefit payments?</b>
+ <div onChange={otherIncomeHandler}>
+ <Form.Check name='otherIncome' label="Yes" value="Yes" type="radio" className='my-3' id="otherIncomeYes"/>
+  <Form.Check name='otherIncome' label="No" value="No" type='radio' className='my-3' id="otherIncomeNo"/>
+ </div>
+ <div>
+ {isOtherIncome &&  <ul>
+    Check all that apply
+    <li>
+    <Form.Check className="my-3" onClick={scholasticHandler}  label={<div>I have <a href="#" >scholastic income</a> </div>} name="scholastic" type="checkbox" id="scholastic"/>
+    
+    {isScholar && <ul>
+      <p>Check all that apply</p>
+      <li>
+      <Form.Check className="my-3"  label={<p> <a href="#" >T4A -</a> Pension, Retirement, Annuity, and other income (including scholarships and business) </p>} name="scholastic1" type="checkbox" id="scholastic1"/>          
+      <Form.Check className="my-3"  label={<p> <a href="#" >T4E -</a> Employment Insurence benfit </p>} name="scholastic2" type="checkbox" id="scholastic2"/>          
+      <Form.Check className="my-3"  label={<p> <a href="#" >T4RSP -</a> Registered Retirement saving plan income </p>} name="scholastic3" type="checkbox" id="scholastic3"/>          
+      </li>
+    </ul>}
+
+    </li>
+    <li>
+    <Form.Check className="my-3"   label={<div> <a href="#" >Foreign</a> - Income from outside of canada </div>} name="foregin" type="checkbox" id="foregin"/>
+    </li>
+    <li>
+    <Form.Check className="my-3" onClick={disabilityHandler}  label={<div>I have <a href="#" >scholastic income</a> </div>} name="disability" type="checkbox" id="disability"/>
+
+    {isDisability && <ul>
+      <p>Check all that apply</p>
+      <li>
+      <Form.Check className="my-3"  label={<p> <a href="#" >T4A(p) -</a> Canada Pension Plan or Quebec Pension plan benifits </p>} name="scholastic1" type="checkbox" id="scholastic1"/>          
+      <Form.Check className="my-3"  label={<p> <a href="#" >T4A -</a> Pension, Retirement, Annuity, and Other income </p>} name="scholastic2" type="checkbox" id="scholastic2"/>          
+      </li>
+    </ul>}
+    </li>
+    <li>
+    <Form.Check className="my-3"   label={<div> I recieved <a href="#" >Alimony or child support</a> </div>} name="alimony" type="checkbox" id="alimony"/>
+    </li>
+    <li>
+    <Form.Check className="my-3" onClick={advanceHandler}  label={<div>I recieve <a href="#" >advance payments </a> of the Canadian workers benefits </div>} name="advance" type="checkbox" id="advance"/>
+
+    {isAdvance && <ul>
+      <p>Check all that apply</p>
+      <li>
+      <Form.Check className="my-3"  label={<p> <a href="#" >TRC210 -</a> Canada Workers Benifit Advance payments </p>} name="advance1" type="checkbox" id="advance1"/>          
+      </li>
+      <li>
+    <Form.Check className="my-3"   label={<div> I recieved <a href="#" >Other Income</a> not include anywhere else </div>} name="another_income" type="checkbox" id="another_income"/>
+    </li>
+    </ul>}
+    </li>
+  </ul>}
+ </div>
+</div>
+
+<div>
+  <b className='my-3'>Hemanth, did you, your spouse/partner, or dependent recieve <a href='#'>Split income</a>? (this does not apply to pension income splitting)</b>
+  <Form.Check name='parterIncome' label="Yes" value="Yes" type="radio" className='my-3' id="parterIncomeYes"/>
+  <Form.Check name='parterIncome' label="No" value="No" type='radio' className='my-3' id="parterIncomeNo"/>
+</div>
+
         <hr className='mt-5'></hr>
         <div className='d-flex justify-content-between'>
           <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
