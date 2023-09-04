@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Nav } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import "./Alberta.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';

@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import image from "../../assets/images/box.png";
 import { Nav, Form,  Button } from 'react-bootstrap';
-import "./Login_form.css"
+import "./LoginForm.css"
 
 const Login_form = () => {
     // const [validated, setValidated] = useState(false);

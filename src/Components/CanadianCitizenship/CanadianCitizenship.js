@@ -36,7 +36,7 @@ const CanadianCitizenship = () => {
     <Container className='canadian'>
          <div className='d-flex justify-content-center mb-1'>
             <div className='territory '>
-                <img src={flag} />
+                <img src={flag} alt="flag" />
             </div>
         </div>
         <div><h6 className='text-center'>Are you a Canadian citizen?</h6></div>
@@ -122,7 +122,7 @@ const CanadianCitizenship = () => {
         <div className='py-4'>
         <div className='d-flex justify-content-center mb-1'>
             <div className='territory '>
-                <img src={taxlogo} />
+                <img src={taxlogo}  alt="text logo"/>
             </div>
         </div>
                 <div><h6 className='text-center text-grey'>Do you need to file your tax return for any prior year?</h6></div>
@@ -149,7 +149,7 @@ const CanadianCitizenship = () => {
         {isPrior && <div>
             <div className='d-flex justify-content-center mb-1'>
             <div className='territory '>
-                <img src={ok} />
+                <img src={ok}  alt="text logo"/>
             </div>
             </div>
             <div>
