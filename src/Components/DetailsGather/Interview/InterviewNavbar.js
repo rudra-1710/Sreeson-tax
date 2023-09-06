@@ -2,6 +2,7 @@ import React from 'react'
 import { Accordion, Row, Col, Nav } from 'react-bootstrap';
 import logo from "../../../assets/images/box.png"
 import "./InterviewNavbar.css"
+import { Link } from 'react-router-dom';
 
 const InterviewNavbar = () => {
   
@@ -60,11 +61,17 @@ const InterviewNavbar = () => {
         <Accordion.Header className='rounded-0 accordion '><p className='nav-text'>My Info</p></Accordion.Header>
         <Accordion.Body className='accordian rounded-0 p-0'>
             <div className='nav-links'>
-            <Nav.Link href="#" className='rounded-0'><p className='nav-text rounded-0'>Maritial status</p></Nav.Link>
-                <Nav.Link href="#" className='rounded-0'><p className='nav-text rounded-0'>view all tax returns</p></Nav.Link>
+            <Link to="/marital-status">
+             <Nav.Link href="#" className='rounded-0'><p className='nav-text rounded-0'>Maritial status</p></Nav.Link>
+            </Link>
+              <Nav.Link href="#" className='rounded-0'><p className='nav-text rounded-0'>view all tax returns</p></Nav.Link>
+            <Link to="/province">
                 <Nav.Link href="#" className='rounded-0'><p className='nav-text rounded-0'>Province of residence</p></Nav.Link>
+            </Link>
+            <Link to={"/citizenship"}>
 
-<Nav.Link href="#" className='rounded-0'><p className='nav-text rounded-0'>Hemanth's change in residence</p></Nav.Link>
+              <Nav.Link href="#" className='rounded-0'><p className='nav-text rounded-0'>Hemanth's change in residence</p></Nav.Link>
+            </Link>
 
 <Nav.Link href="#" className='rounded-0'><p className='nav-text rounded-0'>Hemanth's Canadian residence</p></Nav.Link>
 

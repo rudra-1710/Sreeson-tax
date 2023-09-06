@@ -23,13 +23,12 @@ const GoogleTranslateWidget = ({code = 'en'}) => {
       googleTranslateIcon[0].setAttribute('style', 'display: none;');
       const googleSelectLang = document.querySelectorAll('.VIpgJd-ZVi9od-xl07Ob-lTBxed');
       googleSelectLang[0].setAttribute('style', 'display: none;');
-      const skipTranslate = document.querySelectorAll('.skiptranslate');
-      skipTranslate.map(item => {
-        item.setAttribute('style', 'display: none;');
-        return item;
-      })
-
-    }, 2500)
+      // const skipTranslate = document.querySelectorAll('.skiptranslate');
+      //   skipTranslate.map(item => {
+      //     item.setAttribute('style', 'display: none;');
+      //     return item;
+      //   })
+    }, 3000)
   }, [code]);
 
   return (
