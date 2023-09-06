@@ -56,7 +56,7 @@ const NewfoundLand = () => {
             <div className='py-4'>
                 <div className='d-flex justify-content-center mb-1'>
             <div className='country-logo py-2'>
-                <img src={Nl} />
+                <img src={Nl}  alt='nl'/>
             </div>
         </div>
                 <div><h6 className='text-center'>Did you live within Nisga'a Lands or Tsawwassen Lands on December 31,2022?</h6></div>

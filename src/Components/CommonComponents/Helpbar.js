@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-// import { Nav , Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Accordion, Row, Col, Nav, Offcanvas, Form } from 'react-bootstrap';
+import { Accordion, Row, Col, Nav, Offcanvas } from 'react-bootstrap';
 import logo from "../../assets/images/box.png"
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 import "../Home/HomePage.css"
+import GoogleTranslateWidget from '../../utils/GoogleTranslateWidget';
 
 const Helpbar = () => {
 
@@ -15,6 +15,8 @@ const Helpbar = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const taxYear= new Date().getFullYear()-1;
+
+
   return (
     <>
             <div className='d-flex justify-content-between  align-items-center pt-2'>
@@ -134,11 +136,10 @@ const Helpbar = () => {
         </Nav.Link>
           <div className='d-flex pt-1 align-items-center language-iconhover'>
           <div className='language-icon'></div>
-          <div><Form.Select aria-label="Default select example" className='language-selector'>
-         <option className='option' value="Englisg"><p>English</p></option>
-         <option className='option' value="française"><p>française</p></option>
-          <option className='option' value="普通话"><p>普通话</p></option>
-    </Form.Select></div>
+          <GoogleTranslateWidget/>
+    <div>
+
+    </div>
           </div>
           
         </div>

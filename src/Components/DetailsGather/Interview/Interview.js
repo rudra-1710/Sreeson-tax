@@ -12,6 +12,7 @@ import DependantsInfo from '../../DependantsInfo/DependantsInfo'
 import PersonalInfo from '../../PersonalInfo/PersonalInfo'
 import WhatsNew from '../../WhatsNew/WhatsNew'
 import GetStartedForm from '../../GetStarted/GetStartedForm'
+import { Route, Routes } from 'react-router-dom'
 
 
 const Interview = () => {
@@ -27,15 +28,17 @@ const Interview = () => {
         </Col>
         <Col >
         <Helpbar />
-        <TaxReturnType />
-            <InterviewHomepage />
-            <Province />
-            <CanadianCitizenship />
-            <Contact />
-            <DependantsInfo />
-            <PersonalInfo />
-            <WhatsNew />
-            <GetStartedForm />
+        <Routes>
+          <Route path='/tax-type' element={<TaxReturnType />}/>
+          <Route path='/province' element={<Province />}/>
+          <Route path='/citizenship' element={<CanadianCitizenship/>}/>
+          <Route path='/contact' element={<Contact/>} />
+          <Route path='/dependants' element={<DependantsInfo />}/>
+          <Route path='/personal' element={<PersonalInfo />}/>
+          <Route path='/whats' element={<WhatsNew/>}/>
+          <Route path='/getstart' element={<GetStartedForm/>} />
+          <Route path='/marital-status' element={<InterviewHomepage/>} />
+        </Routes>
             <div className='text-center bottom-1 left-0 right-0'>
         <div className='my-5'>
           <p>License Agreement Privacy Statement Cobrowse</p>

@@ -84,7 +84,7 @@ const Northwest = () => {
             <div className='py-4'>
                 <div className='d-flex justify-content-center mb-1'>
             <div className='country-logo py-2'>
-                <img src={NW} />
+                <img src={NW} alt="nw"/>
             </div>
         </div>
                 <div><h6 className='text-center'>Did you reside on Tåîchô lands or within a Tåîchô community on December 31, 2022?</h6></div>

@@ -67,7 +67,7 @@ const Yukon = () => {
             <div className='py-4'>
                 <div className='d-flex justify-content-center mb-1'>
             <div className='country-logo py-2'>
-                <img src={yukon} />
+                <img src={yukon} alt="yukon"/>
             </div>
         </div>
                 <div><h6 className='text-center'>Did you reside within a self-governing Yukon First Nation settlement land on December 31, 2022?</h6></div>

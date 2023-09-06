@@ -1,5 +1,5 @@
 import React from 'react'
-import { Accordion, Row, Col, Nav, Offcanvas } from 'react-bootstrap';
+import { Accordion, Row, Col, Nav } from 'react-bootstrap';
 import logo from "../../assets/images/box.png"
 
 import "./HomeNavbar.css"

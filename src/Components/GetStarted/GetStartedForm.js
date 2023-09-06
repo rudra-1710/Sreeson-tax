@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Container, Form, Nav} from 'react-bootstrap'
+import {Container, Form } from 'react-bootstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import "./GetStarted.scss"
 import {faLock, faAngleLeft, faUser, faMoneyCheckDollar} from '@fortawesome/free-solid-svg-icons';
@@ -142,7 +142,7 @@ function GetStartedForm() {
    
     <Container>
       <div className='d-flex justfiy-content-center align-items-center'>
-        <img src="" className='pro-logo'/>
+        <img src="" className='pro-logo' alt="logo"/>
         <h6 className='my-4'>
           <FontAwesomeIcon icon={faUser} className='pe-3'/>Hemanth, What happend for you in 2022?</h6>
       </div>
@@ -177,7 +177,7 @@ function GetStartedForm() {
                 {wasEmployed && <ul>
                     <li>
                       
-                         <Form.Check className="my-3" onClick={workT4Handler} label={<p><a href="#" className='pe-1'>T4</a>- Employement Income</p>} name="worktype2" type="checkbox" id="worktype2"/>
+                         <Form.Check className="my-3" onClick={workT4Handler} label={<p><a href="#" className='pe-1' target='_blank'>T4</a>- Employement Income</p>} name="worktype2" type="checkbox" id="worktype2"/>
                         {showT4 &&
                            <ul>
                            <li>
