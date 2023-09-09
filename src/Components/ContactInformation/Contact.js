@@ -3,6 +3,7 @@ import "./Contact.scss"
 import { Container, Form } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 function Contact() {
     const country = [ 
@@ -333,7 +334,7 @@ function Contact() {
                 <Form onSubmit={handleSubmit}>
                     <div className='contact-form'>
                     <div>
-                <label for="mail" className='my-2'><p><b>Is your mailing adress outside Canada?</b></p></label><br />
+                <label className='my-2'><p><b>Is your mailing adress outside Canada?</b></p></label><br />
                 <select id="mail" name='mail' className='my-2 date-input-mail' onChange={mailHandler} >
                 <option value="No">No</option>
                 <option value="Yes">Yes</option>
@@ -424,7 +425,7 @@ function Contact() {
                   <div className='d-flex justify-content-between'>
                     <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
                       back</div>
-                    <button className='btn continue-btn'>Continue</button>
+                    <button className='btn continue-btn'><Link to="tax-info">Continue</Link></button>
                   </div>
                 </Form>
                 </div>
