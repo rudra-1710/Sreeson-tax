@@ -6,13 +6,13 @@ import SignUp from './Components/Sign_up_form/SignUp';
 import Interview from './Components/DetailsGather/Interview/Interview';
 import { BrowserRouter , Route, Routes } from "react-router-dom";
 import TaxReturnType from './Components/TaxReturnType/TaxReturnType';
-import InterviewHomepage from './Components/DetailsGather/Interview/InterviewHomepage';
 import Province from './Components/ProvinceOfResidence/Province';
 import CanadianCitizenship from './Components/CanadianCitizenship/CanadianCitizenship';
 import Contact from './Components/ContactInformation/Contact';
 import DependantsInfo from './Components/DependantsInfo/DependantsInfo';
 import PersonalInfo from './Components/PersonalInfo/PersonalInfo';
 import GetStartedForm from './Components/GetStarted/GetStartedForm';
+import MaritalStatus from './Components/DetailsGather/Interview/MaritalStatus';
 
 
 const App = () => {
@@ -23,8 +23,8 @@ const App = () => {
         <Route path='login' element={<LoginForm/>}/>
         <Route path='signUp' element={<SignUp />}/>
         <Route path='application' element={<Interview/>}>
-        <Route path='type' element={<TaxReturnType />}/>
-          <Route path='marital-status' element={<InterviewHomepage/>} />
+          <Route path='type' element={<TaxReturnType />}/>
+          <Route path='marital-status' element={<MaritalStatus/>}/>
           <Route path='province' element={<Province />}/>
           <Route path='citizenship' element={<CanadianCitizenship/>}/>
           <Route path='contact' element={<Contact/>} />
@@ -32,7 +32,7 @@ const App = () => {
           <Route path='personal-info' element={<PersonalInfo />}/>
           {/* <Route path='/whats' element={<WhatsNew/>}/> */}
           <Route path='tax-info' element={<GetStartedForm/>} />
-          </Route>
+        </Route>
 
         <Route path='/' element={<Home/>} />
       </Routes>

@@ -3,6 +3,7 @@ import { Accordion, Row, Col, Nav } from 'react-bootstrap';
 import logo from "../../assets/images/box.png"
 
 import "./HomeNavbar.css"
+import { Link } from 'react-router-dom';
 
 const HomeNavbar = () => {
   
@@ -26,7 +27,7 @@ const HomeNavbar = () => {
             <div className='tax-refund'>
             <Accordion >
       <Accordion.Item eventKey="0" className='rounded-0'>
-        <Accordion.Header className='rounded-0 accordion '><p className='nav-text'>2022 Tax Refund</p></Accordion.Header>
+        <Accordion.Header className='rounded-0 accordion '><p className='nav-text'>{taxYear} Tax Refund</p></Accordion.Header>
         <Accordion.Body className='accordian rounded-0 p-0 '>
             <div  className='nav-links'>
                 <Nav.Link href="#" className='rounded-0'><p className='nav-text rounded-0'>view all tax returns</p></Nav.Link>
@@ -37,7 +38,7 @@ const HomeNavbar = () => {
                 
             </div>
           </div>
-          <p className='Newreturn p-2 px-4'><Nav.Link>start a new return</Nav.Link></p>
+          <p className='Newreturn p-2 px-4'><Nav.Link><Link to="/application/type">start a new return</Link></Nav.Link></p>
        <div className='d-flex justify-content-center hrline'>
       <hr className=' m-0'></hr> 
        </div>

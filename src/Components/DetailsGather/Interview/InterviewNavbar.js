@@ -62,7 +62,6 @@ const InterviewNavbar = () => {
                     <Accordion.Body className='accordian rounded-0 p-0'>
                       <div className='nav-links'>
                       <Nav.Link className='rounded-0'><Link to="marital-status"><p className='nav-text rounded-0'>Maritial status</p></Link></Nav.Link>
-                              <Nav.Link className='rounded-0'> <p className='nav-text rounded-0'>view all tax returns</p></Nav.Link>
                               <Nav.Link className='rounded-0'><Link to="province"><p className='nav-text rounded-0'>Province of residence</p></Link></Nav.Link>
 
                               <Nav.Link className='rounded-0'><p className='nav-text rounded-0'>Hemanth's change in residence</p></Nav.Link>
