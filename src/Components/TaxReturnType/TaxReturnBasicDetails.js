@@ -4,6 +4,7 @@ import "../Login_form/LoginForm.css"
 import "./TaxReturnBasicDetails.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 function TaxReturnBasicDetails() {
 
@@ -47,9 +48,9 @@ function TaxReturnBasicDetails() {
                   </div>
                   <hr className='mt-5'></hr>
                   <div className='d-flex justify-content-between'>
-                    <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
-                      back</div>
-                    <div className='btn continue-btn'>Continue</div>
+                    <Link to="/"><div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
+                      back</div></Link>
+                      <Link to="/application/marital-status"><div className='btn continue-btn'>Continue</div></Link>
                   </div>
                 </Form>
               </div>
