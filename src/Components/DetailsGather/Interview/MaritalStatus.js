@@ -119,8 +119,8 @@ const MaritalStatus = () => {
         </div>
     </div>
     <div>
-      {singel &&<StatusSingle />}
-      {married &&<StatusMarried />}
+      {singel && <StatusSingle />}
+      {married && <StatusMarried />}
       {livin && <StatusLivin />}
       {widowed && <StatusWidowed />}
       {divorced && <StatusDivorced />}
