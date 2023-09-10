@@ -3,7 +3,7 @@ import Home from './Components/Home/Home';
 import "./App.css"
 import LoginForm from './Components/Login_form/LoginForm';
 import SignUp from './Components/Sign_up_form/SignUp';
-import Interview from './Components/DetailsGather/Interview/Interview';
+import ApplicationReturn from './Components/DetailsGather/Interview/ApplicationReturn';
 import { BrowserRouter , Route, Routes } from "react-router-dom";
 import TaxReturnType from './Components/TaxReturnType/TaxReturnType';
 import Province from './Components/ProvinceOfResidence/Province';
@@ -22,7 +22,7 @@ const App = () => {
       <Routes>
         <Route path='login' element={<LoginForm/>}/>
         <Route path='signUp' element={<SignUp />}/>
-        <Route path='application' element={<Interview/>}>
+        <Route path='application' element={<ApplicationReturn/>}>
           <Route path='type' element={<TaxReturnType />}/>
           <Route path='marital-status' element={<MaritalStatus/>}/>
           <Route path='province' element={<Province />}/>
@@ -33,7 +33,6 @@ const App = () => {
           {/* <Route path='/whats' element={<WhatsNew/>}/> */}
           <Route path='tax-info' element={<GetStartedForm/>} />
         </Route>
-
         <Route path='/' element={<Home/>} />
       </Routes>
     </BrowserRouter>
