@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Accordion, Row, Col, Nav, Offcanvas } from 'react-bootstrap';
-import logo from "../../assets/images/box.png"
+import logo from "../../assets/images/sreeson.png"
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
@@ -89,7 +89,7 @@ const Helpbar = () => {
                               <Nav.Link className='rounded-0'> <p className='nav-text rounded-0'>view all tax returns</p></Nav.Link>
                               <Nav.Link className='rounded-0'><Link to="province"><p className='nav-text rounded-0'>Province of residence</p></Link></Nav.Link>
 
-                              <Nav.Link className='rounded-0'><p className='nav-text rounded-0'>Hemanth's change in residence</p></Nav.Link>
+                              <Nav.Link className='rounded-0'><Link to="change"><p className='nav-text rounded-0'>Hemanth's change in residence</p></Link></Nav.Link>
 
                               <Nav.Link className='rounded-0'><Link to="citizenship"> <p className='nav-text rounded-0'>Hemanth's Canadian residence</p></Link></Nav.Link>
 
@@ -101,9 +101,9 @@ const Helpbar = () => {
 
                               <Nav.Link className='rounded-0'><Link to="tax-info"> <p className='nav-text rounded-0'>Personal info summery</p></Link></Nav.Link>
 
-                              <Nav.Link className='rounded-0'><p className='nav-text rounded-0'>What's new Tax</p></Nav.Link>
-                              <Nav.Link className='rounded-0'><p className='nav-text rounded-0'>Get strated</p></Nav.Link>
-                              <Nav.Link className='rounded-0'><p className='nav-text rounded-0'>Personal Tax profile for Hemanth</p></Nav.Link>
+                              <Nav.Link className='rounded-0'><Link to="whats"><p className='nav-text rounded-0'>What's new Tax</p></Link></Nav.Link>
+                              <Nav.Link className='rounded-0'><Link to="tax-info"><p className='nav-text rounded-0'>Get strated</p></Link></Nav.Link>
+                             <Nav.Link className='rounded-0'><p className='nav-text rounded-0'>Personal Tax profile for Hemanth</p></Nav.Link>
 
                             </div>
                           </Accordion.Body>

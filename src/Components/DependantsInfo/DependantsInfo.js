@@ -4,6 +4,7 @@ import "../ProvinceOfResidence/Alberta.scss"
 import "./DependantsInfo.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
+import DependantDetails from './DependantDetails';
 
 const DependantsInfo = () => {
   return (
@@ -37,6 +38,7 @@ const DependantsInfo = () => {
                     <button className='btn continue-btn'>Continue</button>
                   </div>
           </form>
+          <DependantDetails />
     </Container>
   )
 }

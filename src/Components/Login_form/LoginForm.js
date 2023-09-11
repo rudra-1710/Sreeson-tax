@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import image from "../../assets/images/box.png";
+import image from "../../assets/images/sreeson.png";
 import { Nav, Form,  Button } from 'react-bootstrap';
 import "./LoginForm.css"
 
@@ -8,7 +8,9 @@ const Login_form = () => {
     // const [validated, setValidated] = useState(false);
     const[email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [showpass , setShowpass] = useState(true)
+    const [showpass , setShowpass] = useState(true);
+    const [validemail, setValidemail] =  useState(false)
+    const [validePass, setValidePass] =  useState(false)
 
     const showPassword = ()=>{
             setShowpass(showpass=>{
@@ -18,10 +20,12 @@ const Login_form = () => {
     
     const passwordHandler = (event)=>{
       setPassword(event.target.value)
+      setValidePass(false)      
    }
 
    const emailHandler = (event) =>{
      setEmail(event.target.value)
+     setValidemail(false)
    }
 
     const handleSubmit = (event) => {
@@ -33,21 +37,21 @@ const Login_form = () => {
       if (!email.includes("@")){
         event.preventDefault();
         event.stopPropagation();
-        alert("email not correct")
+        setValidemail(true)
       }
 
-      else if(password.length <= 4){
+      if(password.length <= 4){
         event.preventDefault();
         event.stopPropagation();
-        alert("password must be more then 5 characters")
+        setValidePass(true)
       }
   
       // setValidated(true);
     };
   return (
     <>
-    <div className='py-4 px-2 h-100 d-flex justify-content-center'>
-        <div className='my-auto'>
+    <div className='py-4 px-2 h-100 d-flex justify-content-center '>
+        <div className='my-auto p-5 login-form'>
     <div className='d-flex justify-content-center '>
         <img  src={image} alt="logo" className='logo-size'/>
     </div>
@@ -64,22 +68,28 @@ const Login_form = () => {
           <Form.Control
             required
             onChange={emailHandler}
+            name="email"
             value={email}
             type="gmail"
             placeholder="Enter mail"
             
           />
+          {validemail && <p className='invalid'>Please use a valid email</p>}
         </Form.Group>
+        
         <Form.Group  md="4" className='my-3' controlId="validationCustom01">
           <Form.Label>Password</Form.Label>
           <Form.Control
             required
             onChange={passwordHandler}
+            name='password'
             value={password}
             type={showpass ? "password" : "text"}
             placeholder=" Enter Password"
             
           />
+          {validePass && <p className='invalid'>password must contain at least 5 characters</p>}
+          </Form.Group>
            <Form.Group className="position-relative my-3">
             <Form.Check
               name="terms"
@@ -88,7 +98,7 @@ const Login_form = () => {
             />
           </Form.Group>
           
-        </Form.Group>
+        
         <div className="d-grid ">
         <Button type="submit" className='my-3 login-btn'>Submit form</Button>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import image from "../../assets/images/box.png";
+import image from "../../assets/images/sreeson.png";
 import { Nav, Form,  Button } from 'react-bootstrap';
 import "./SignUp.css"
 
@@ -81,20 +81,12 @@ const Sign_up = () => {
       dataList.push(newData)
       setDataValues(dataList)
       console.log(dataList)
-      // setPassword("");
-      // setRepassword("");
-      // setOwnQuestion(false)
-      // setEmail("");
-      // setQuestions("");
-      // setAnswer("")
-      // setValidated(true);
-
       // setValidated(true);
     };
   return (
     <>
     <div className='py-4 px-2 h-100 d-flex justify-content-center'>
-        <div className='my-auto'>
+        <div className='my-auto p-5 signup-form'>
     <div className='d-flex justify-content-center '>
         <img  src={image} alt="logo" className='logo-size'/>
     </div>
