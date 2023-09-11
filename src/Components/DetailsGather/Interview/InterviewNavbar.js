@@ -26,7 +26,7 @@ const InterviewNavbar = () => {
               <div className='tax-refund'>
                 <Accordion >
                   <Accordion.Item eventKey="0" className='rounded-0'>
-                    <Accordion.Header className='rounded-0 accordion '><p className='nav-text'>2022 Tax Refund</p></Accordion.Header>
+                    <Accordion.Header className='rounded-0 accordion '><p className='nav-text'>{taxYear} Tax Refund</p></Accordion.Header>
                     <Accordion.Body className='accordian rounded-0 p-0 '>
                       <div className='nav-links'>
                         <Nav.Link className='rounded-0'><Link to="/"><p className='nav-text rounded-0'>view all tax returns</p></Link></Nav.Link>
@@ -36,7 +36,7 @@ const InterviewNavbar = () => {
                 </Accordion>
 
               </div>
-              <Nav.Link href="#" className='py-1'>
+              <Nav.Link href="/" className='py-1'>
                 <img src={logo} className='main-logo' alt='logo' />
               </Nav.Link>
               <div className='tax-refund'>
@@ -45,7 +45,7 @@ const InterviewNavbar = () => {
                     <Accordion.Header className='rounded-0 accordion '><p className='nav-text'>My Returns</p></Accordion.Header>
                     <Accordion.Body className='accordian rounded-0 p-0'>
                       <div className='nav-links'>
-                        <Nav.Link href="#" className='rounded-0'><p className='nav-text rounded-0'>view all tax returns</p></Nav.Link>
+                      <Nav.Link href="/" className='rounded-0'><p className='nav-text rounded-0'>view all tax returns</p></Nav.Link>
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>

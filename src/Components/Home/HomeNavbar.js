@@ -30,7 +30,7 @@ const HomeNavbar = () => {
         <Accordion.Header className='rounded-0 accordion '><p className='nav-text'>{taxYear} Tax Refund</p></Accordion.Header>
         <Accordion.Body className='accordian rounded-0 p-0 '>
             <div  className='nav-links'>
-                <Nav.Link href="#" className='rounded-0'><p className='nav-text rounded-0'>view all tax returns</p></Nav.Link>
+               <Link to="/"> <Nav.Link href="#" className='rounded-0'><p className='nav-text rounded-0'>view all tax returns</p></Nav.Link></Link>
             </div>
         </Accordion.Body>
       </Accordion.Item>

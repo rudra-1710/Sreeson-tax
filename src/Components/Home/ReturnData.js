@@ -2,6 +2,7 @@ import React from 'react';
 import "./HomePage.css"
 import { Button } from 'react-bootstrap';
 import Data from "../../assets/Data/Data"
+import { Link } from 'react-router-dom';
 
 const ReturnData = () => {
   const person_data = Data.map((data)=>
@@ -14,7 +15,7 @@ const ReturnData = () => {
      </div>
      <div>
      <div className='d-flex p-2'>
-            <Button className='return-button'>Continue</Button>{' '}
+            <Link to="/application/marital-status"><Button className='return-button'>Continue</Button></Link>
      </div>
      </div>
  </div>
@@ -32,7 +33,7 @@ const ReturnData = () => {
                 <h6>Start a new 2022 Return</h6>
             </div>
             <div className='d-flex  p-2 py-4'>
-                <Button className='return-butn'>Continue</Button>{' '}
+            <Link to="/application/type"><Button className='return-butn'>Continue</Button></Link>
             </div>
         </div>
        

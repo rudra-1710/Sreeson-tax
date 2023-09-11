@@ -104,7 +104,7 @@ const StatusSingle = () => {
 
      <hr></hr>
      <div className='d-flex justify-content-between'>
-      <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/> back</div>
+      <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>back</div>
       <div className='btn continue-btn'>Continue</div>
       </div>  
     </>
