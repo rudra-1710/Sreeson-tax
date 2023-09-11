@@ -9,6 +9,12 @@
  color: blue !important;
 }
 
+.dropdown-menu   {
+    max-height: 300px;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 10px 5px;
+}
 .signup-form{
     border-radius: 30px;
     box-shadow: 0px 0px 20px 0px #e9e6e6d1;
