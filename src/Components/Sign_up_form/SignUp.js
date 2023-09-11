@@ -126,9 +126,16 @@ event.preventDefault();
     console.log(newData);
 
     postApiCall('accounts/create_account')
-    .then(data => {
+    .then(res => {
       console.log(data);
       debugger
+      console.log(res)
+        if (res.status === 200) {
+          console.log(res);
+        }
+        if (res.status ===422) {
+          console.log(res);
+        }
     })
     .catch(error => {
       debugger

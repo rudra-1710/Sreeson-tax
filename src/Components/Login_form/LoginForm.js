@@ -3,13 +3,14 @@ import { useState } from 'react';
 import image from "../../assets/images/sreeson.png";
 import { Nav, Form,  Button } from 'react-bootstrap';
 import "./LoginForm.css"
+import { postApiCall } from '../../utils/services/api.service';
 
 const Login_form = () => {
     // const [validated, setValidated] = useState(false);
-    const[email, setEmail] = useState("");
+    const[identifier, setIdentifier] = useState("");
     const [password, setPassword] = useState("");
     const [showpass , setShowpass] = useState(true);
-    const [validemail, setValidemail] =  useState(false)
+    const [validIdentifier, setValidIdentifier] =  useState(false)
     const [validePass, setValidePass] =  useState(false)
 
     const showPassword = ()=>{
@@ -23,9 +24,8 @@ const Login_form = () => {
       setValidePass(false)      
    }
 
-   const emailHandler = (event) =>{
-     setEmail(event.target.value)
-     setValidemail(false)
+   const identifierHandler = (event) =>{
+    setIdentifier(event.target.value)
    }
 
     const handleSubmit = (event) => {
@@ -34,11 +34,6 @@ const Login_form = () => {
         event.preventDefault();
         event.stopPropagation();
       }
-      if (!email.includes("@")){
-        event.preventDefault();
-        event.stopPropagation();
-        setValidemail(true)
-      }
 
       if(password.length <= 4){
         event.preventDefault();
@@ -46,7 +41,21 @@ const Login_form = () => {
         setValidePass(true)
       }
   
-      // setValidated(true);
+      const login = {
+        identifier,
+        password
+      }
+      postApiCall('accounts/login', login)
+      .then(res => {
+        console.log(res)
+        if (res.status === 200) {
+          console.log(res);
+        }
+        if (res.status ===422) {
+          console.log(res);
+        }
+      })
+      .catch(err => console.log(err));
     };
   return (
     <>
@@ -64,17 +73,18 @@ const Login_form = () => {
                 </div>
                 <Form  onSubmit={handleSubmit} className='py-2'>
                 <Form.Group  md="4" className='my-4' controlId="validationCustom01">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Email or Phone</Form.Label>
           <Form.Control
             required
-            onChange={emailHandler}
+            onChange={identifierHandler}
             name="email"
-            value={email}
-            type="gmail"
-            placeholder="Enter mail"
+            value={identifier}
+            type="text"
+            placeholder=""
             
           />
-          {validemail && <p className='invalid'>Please use a valid email</p>}
+          {validIdentifier && <p className='invalid'>Email or Phone is Invalid</p>}
+
         </Form.Group>
         
         <Form.Group  md="4" className='my-3' controlId="validationCustom01">
@@ -88,7 +98,7 @@ const Login_form = () => {
             placeholder=" Enter Password"
             
           />
-          {validePass && <p className='invalid'>password must contain at least 5 characters</p>}
+          {validePass && <p className='invalid'>password must contain at least 8 characters</p>}
           </Form.Group>
            <Form.Group className="position-relative my-3">
             <Form.Check
