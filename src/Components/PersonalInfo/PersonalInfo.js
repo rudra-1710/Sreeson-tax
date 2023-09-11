@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Form, Nav } from 'react-bootstrap'
+import { Col, Container, Form, Nav, Row } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import "./PersonalInfo.scss"
@@ -44,19 +44,22 @@ function PersonalInfo() {
             
                 <Form>
                 <div className='d-flex justify-content-center'>
-                    <div>
+                    <Row >
         {details.map(data=>{
             return(
+                <Col>
                 <Form.Group  md="4" className='my-4' id={data.id} controlId="validationCustom01" key={data.label}>
                 <Form.Label>
                     <p>{data.label}</p>
                 </Form.Label>
                 <Form.Control  required={data.isRequired} type={data.type} className='my-1 date-input-Personal'/>
             </Form.Group>
+            </Col>
             )
         })}
+        <Col></Col>
         <Nav.Link href='#' className='theme-color'><p className='d-inline'>Why do we need this?</p></Nav.Link>
-        </div>
+        </Row>
         </div>
         <hr className='mt-5'></hr>
                   <div className='d-flex justify-content-between'>

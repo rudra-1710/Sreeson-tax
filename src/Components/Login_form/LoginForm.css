@@ -8,3 +8,15 @@
 .theme-color:hover{
  color: blue !important;
 }
+.invalid {
+    color: red;
+}
+.login-form{
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 0px #e9e6e6d1;
+}
+@media(max-width:550px){
+    .login-form{
+        box-shadow: none;
+    }
+}

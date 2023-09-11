@@ -13,6 +13,8 @@ import DependantsInfo from './Components/DependantsInfo/DependantsInfo';
 import PersonalInfo from './Components/PersonalInfo/PersonalInfo';
 import GetStartedForm from './Components/GetStarted/GetStartedForm';
 import MaritalStatus from './Components/DetailsGather/Interview/MaritalStatus';
+import WhatsNew from './Components/WhatsNew/WhatsNew';
+import ChangeInResidence from './Components/ChangeInResidence/ChangeInResidence';
 
 
 const App = () => {
@@ -30,7 +32,8 @@ const App = () => {
           <Route path='contact' element={<Contact/>} />
           <Route path='dependants' element={<DependantsInfo />}/>
           <Route path='personal-info' element={<PersonalInfo />}/>
-          {/* <Route path='/whats' element={<WhatsNew/>}/> */}
+          <Route path='whats' element={<WhatsNew />}/>
+          <Route path="change" element={<ChangeInResidence />} />
           <Route path='tax-info' element={<GetStartedForm/>} />
         </Route>
         <Route path='/' element={<Home/>} />

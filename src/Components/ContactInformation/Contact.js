@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import "./Contact.scss"
-import { Container, Form } from 'react-bootstrap'
+import { Col, Container, Form, Row } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 function Contact() {
+    const provin = ["Alberta","British Columbia", "Manitoba","New Brunswick","Newfoundland and Labrador","Northwest Territories","Nova Scotia","Nunavut","Ontario","Prince Edward Island","Québec","Saskatchewan","Yukon"]
     const country = [ 
         {"name": "Afghanistan", "code": "AF"}, 
         {"name": "land Islands", "code": "AX"}, 
@@ -355,31 +356,45 @@ function Contact() {
                 
             <div>
             <p><b>What's your mailing address?</b></p>
+            <Row>
                     {mailForm.map(data=>{
-                      return(  <Form.Group  md="4" className='my-4' controlId="validationCustom01" key={data.label}>
+                      return( 
+                        <Col>
+                             <Form.Group  md="4" className='my-4' controlId="validationCustom01" key={data.label}>
                         <Form.Label>
                             <p>{data.label}</p>
                         </Form.Label>
-                        <Form.Control required type={data.type} className='my-1 date-input-mail' placeholder={data.label} />
-                    </Form.Group>)
+                        <Form.Control required type={data.type} className='my-1 date-input-mail'  />
+                    </Form.Group>
+                        </Col>
+                      )
                     })}
+                    
+                    </Row>
                     </div>
                    <div className='d-flex align-items-center'>
                    <input type="checkbox" name="mailaddress" id="mailaddress" className='m-1' onClick={mailAddressHandler}/>
                 <label for="mailaddress"> <p>The mailing address above is where Icurrently live</p></label>
                    </div>
-                <Form.Group  md="4" className='my-4' controlId="validationCustom01" >
+                    <Row>
+                        <Col>
+                    <Form.Group  md="4" className='my-4' controlId="validationCustom01" >
                         <Form.Label>
                             <p>Hemanth's email adress</p>
                         </Form.Label>
-                        <Form.Control required type="email" className='my-1 date-input-mail' placeholder="enter mail" />
+                        <Form.Control required type="email" className='my-1 date-input-mail'  />
                     </Form.Group>
+                    </Col>
+                    <Col>
                     <Form.Group  md="4" className='my-4' controlId="validationCustom01">
                         <Form.Label>
                             <p>Hemanth's phone number</p>
                         </Form.Label>
-                        <Form.Control required type="number" className='my-1 date-input-mail' placeholder=" Phone number" />
+                        <Form.Control required type="number" className='my-1 date-input-mail' />
                     </Form.Group>
+                    </Col>
+                    
+                    </Row>
                     <div><label for="language" className='my-2'><p>Is your countrying adress outside Canada?</p></label><br />
                 <select id="language" name='language' className='my-2 date-input-mail' >
                 <option value="En">English</option>
@@ -399,9 +414,10 @@ function Contact() {
                     <div>
                         <label for="territory" className='my-2'><p>Which province/territory do you currectly live?</p></label><br />
                             <select id="territory" name='territory' className='my-2 date-input-mail' >
-                                <option value="En">English</option>
-                                <option value="Frc">France</option>
-                                <option value="Chi">Chainess</option>
+                                <option>--Select--</option>
+                                {provin.map((name,index)=>{
+                                    return(<option key={index}>{name}</option>)
+                                })}
                             </select>
                     </div>
                 }
