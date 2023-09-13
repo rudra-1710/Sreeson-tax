@@ -7,7 +7,6 @@ import { Container } from 'react-bootstrap';
 
 const StatusSingle = () => {
   const [isYes, setIsyes] = useState(false)
-
   const [isSeparated, setIsSeparated] = useState(false);
   const [valiBtn, setvaliBtn] = useState(false)
   // const {isvalid} = formsta

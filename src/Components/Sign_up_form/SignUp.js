@@ -20,9 +20,11 @@ const Sign_up = () => {
   const [security_question, setSecurity_question] = useState("");
   const [answer, setAnswer] = useState("")
   const [phone_number, setPhone_number] = useState("");
+  const [user_id, setUser_id] = useState("");
 
 
   const [isEmailError, setIsEmailError] = useState(false);
+  const [isUserId, setIsUserId] = useState(false);
   const [isPasswordError, setIsPasswordError] = useState(false);
   const [isPasswordPattren, setIsPasswordPattren] = useState(false);
   const [isemailPattren, setIsemailPattren] = useState(false);
@@ -95,6 +97,17 @@ const Sign_up = () => {
     })
   }
 
+  const handleUserId = (event) => {
+
+    const regularExp = /^[a-zA-Z0-9]{4,}$/
+    if (event.target.value.match(regularExp)) {
+      setIsUserId(true);
+      setUser_id(event.target.value)
+    } else {
+      setIsUserId(false);
+    }
+    setUser_id(event.target.value);
+  }
   const handleSubmit = (event) => {
 event.preventDefault();
     // debugger
@@ -130,21 +143,29 @@ else{
       password,
       phone_number,
       security_question,
+      user_id,
       answer,
       phoneCountry
     }
     console.log(newData);
+    postApiCall('accounts/create_account', newData)
+    .then(res => {
+      console.log(data);
+      debugger
+      console.log(res)
+        if (res.status === 200) {
+          console.log(res);
+        }
+        if (res.status ===422) {
+          console.log(res);
+        }
+    })
+    .catch(error => {
+      debugger
+    })
   }
     
 
-    // postApiCall('accounts/create_account')
-    // .then(data => {
-    //   console.log(data);
-    //   debugger
-    // })
-    // .catch(error => {
-    //   debugger
-    // })
   };
 
   return (
@@ -183,6 +204,19 @@ else{
                     type="gmail"
                     name="confirm_email"
                     placeholder="Enter mail"
+                  />
+                </Form.Group>
+                {isEmailError && <p className='text-danger'>Email not match</p>}
+
+                <Form.Group md="4" className='my-4' controlId="validationCustom01" >
+                  <Form.Label>User Id</Form.Label>
+                  <Form.Control
+                    required
+                    onChange={handleUserId}
+                    value={user_id}
+                    type="text"
+                    name="user_id"
+                    placeholder=""
                   />
                 </Form.Group>
                 {isEmailError && <p className='text-danger'>Email not match</p>}
@@ -228,10 +262,16 @@ else{
                   <Form.Label > Security Question</Form.Label>
                   <Form.Select onChange={ownQUestionHandler} aria-label="Default select example" name="security_question">
                     <option>Select your question</option>
-                    <option value="What is your Nick name?">What is your Nick name?</option>
-                    <option value="Who is your best friend">Who is your best friend</option>
-                    <option value="your school name">your school name</option>
-                    <option value="Enter your own Question">Enter your own Question</option>
+                    <option value="Childhood best friend?">Childhood best friend?</option>
+                    <option value="Childhood Hero?">Childhood Hero?</option>
+                    <option value="Favourite vacation spot">Favourite vacation spot</option>
+                    <option value="Favourite musician">Favourite musician</option>
+                    <option value="First Teachers last name">First Teachers last name</option>
+                    <option value="Name of first boss">Name of first boss</option>
+                    <option value="Your childhood summer spot">Your childhood summer spot</option>
+                    <option value="Favourite movie character">Favourite movie character</option>
+                    <option value="First boy/girlfriend name">First boy/girlfriend name</option>
+                    <option value="Favourite book all time?">Favourite book all time?</option>
                   </Form.Select>
 
                   {ownQuestion && <Form.Group md="4" className='my-4' controlId="validationCustom01" >
