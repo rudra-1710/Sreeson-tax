@@ -290,6 +290,8 @@ function Contact() {
     const [isSameProvince, setisSameProvince]= useState(false)
     const[isMailChange,setisMailChange]= useState(false)
     const[islive,setislive]= useState(false)
+    const [check,setcheck] = useState(false)
+    const [validBtn, setvalidBtn ]= useState(false)
     const mailHandler=(event)=>{
         if (event.target.value === "Yes"){
             setisOutside(true)
@@ -315,7 +317,11 @@ function Contact() {
         console.log(event.target.checked)
         if (event.target.checked){
             setislive(true)
+            setcheck(false)
+            setvalidBtn(false)
         }else{
+            setvalidBtn(true)
+            setcheck(true)
             setislive(false)
         }
     }
@@ -324,12 +330,13 @@ function Contact() {
         event.preventDefault()
         if (form.checkValidity() === false) {
           event.preventDefault();
-          event.stopPropagation();
+          event.stopPropagation(); 
         }
+        setcheck(true)
+        setvalidBtn(true)
         console.log(event)
         // setValidated(true);
       };
-
   return (
     <Container>
         <h5 className='text-center'>Let's get your Contact info</h5>
@@ -415,8 +422,8 @@ function Contact() {
                 {isSameProvince && islive &&
                     <div>
                         <label for="territory" className='my-2'><p>Which province/territory do you currectly live?</p></label><br />
-                            <select id="territory" name='territory' className='my-2 date-input-mail' >
-                                <option>--Select--</option>
+                            <select id="territory" required name='territory' className='my-2 date-input-mail' >
+                                <option value="" hidden>--Select--</option>
                                 {provin.map((name,index)=>{
                                     return(<option key={index} value={name}>{name}</option>)
                                 })}
@@ -439,11 +446,14 @@ function Contact() {
                     </div>
                 }
                 </div>
+                <button className='btn  position-relative p-2'>
+                    <input type='checkbox' name="contactCheck" id='contactCheck' checked={check} className='position-absolute top-0 bottom-0 start-0 z-n1' /> <p className='px-3 '>did you enter all details</p>
+                </button>
                 <hr className='mt-5'></hr>
                   <div className='d-flex justify-content-between'>
                     <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
                       back</div>
-                    <button className='btn continue-btn'>continue</button>
+                    <button className='btn continue-btn' hidden={!validBtn}>continue</button>
                   </div>
                 </Form>
                 </div>
