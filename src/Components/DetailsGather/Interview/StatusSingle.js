@@ -6,7 +6,7 @@ import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 
 const StatusSingle = () => {
   const [isYes, setIsyes] = useState(false)
-  const [isSeparated, setIsSeparated] = useState(false)
+  const [isSeparated, setIsSeparated] = useState(false);
 
   const singelStatusHandler=(event)=>{
     if (event.target.value === "Yes"){

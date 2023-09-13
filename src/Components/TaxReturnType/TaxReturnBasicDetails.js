@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Form, Container} from 'react-bootstrap';
 import "../Login_form/LoginForm.css"
 import "./TaxReturnBasicDetails.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { putApiCall } from '../../utils/services/api.service';
 
-function TaxReturnBasicDetails() {
+function TaxReturnBasicDetails({user_id}) {
+  const navigate = useNavigate();
+
+  const [first_name, setFirst_name] = useState("");
+
+  const [middle_name, setMiddle_name] = useState("");
+  const [last_name, setLast_name] = useState("");
+
+  const handleFirstName = (event) => setFirst_name(event.target.value);
+  const handleMiddleName = (event) => setMiddle_name(event.target.value);
+  const handleLastName = (event) => setLast_name(event.target.value);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -15,7 +26,19 @@ function TaxReturnBasicDetails() {
       event.stopPropagation();
     }
 
-    // setValidated(true);
+    const user  = {
+      first_name,
+      middle_name,
+      last_name
+    }
+
+    putApiCall(`user/${user_id}/update`, user).then(res => 
+      {
+
+        navigate('/application/marital-status')
+        console.log(res)
+      }
+    ).catch(err => console.log(err));
   };
   return (
     <Container className='Tax-returnDetails py-4'>
@@ -31,19 +54,19 @@ function TaxReturnBasicDetails() {
                     <Form.Label>
                       <p>First name</p>
                     </Form.Label>
-                    <Form.Control required type="text" className='my-1' placeholder="First name"/>
+                    <Form.Control required type="text" value={first_name} className='my-1' onChange={handleFirstName} placeholder="First name"/>
                   </Form.Group>
                   <Form.Group md="4" className='my-4' controlId="validationCustom01">
                     <Form.Label>
                       <p>Middle name (if applicable)</p>
                     </Form.Label>
-                    <Form.Control type="text" className='my-1' placeholder="Middle name"/>
+                    <Form.Control type="text" className='my-1' value={middle_name} onChange={handleMiddleName} placeholder="Middle name"/>
                   </Form.Group>
                   <Form.Group md="4" className='my-4' controlId="validationCustom01">
                     <Form.Label>
                       <p>Last name</p>
                     </Form.Label>
-                    <Form.Control required type="text" className='my-1' placeholder="Last name"/>
+                    <Form.Control required type="text" className='my-1' value={last_name} onChange={handleLastName} placeholder="Last name"/>
                   </Form.Group>
                   </div>
                   <hr className='mt-5'></hr>
