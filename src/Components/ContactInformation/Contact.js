@@ -289,7 +289,7 @@ function Contact() {
     const [isOutside,setisOutside] = useState(false)
     const [isSameProvince, setisSameProvince]= useState(false)
     const[isMailChange,setisMailChange]= useState(false)
-    const[islive,setislive]= useState(false)
+    const[islive,setislive]= useState(true)
     const [check,setcheck] = useState(false)
     const [validBtn, setvalidBtn ]= useState(false)
     const mailHandler=(event)=>{
@@ -316,13 +316,11 @@ function Contact() {
     const mailAddressHandler = (event)=>{
         console.log(event.target.checked)
         if (event.target.checked){
-            setislive(true)
-            setcheck(false)
-            setvalidBtn(false)
-        }else{
-            setvalidBtn(true)
-            setcheck(true)
             setislive(false)
+            setcheck(false)
+        }else {
+            setvalidBtn(false)
+            setislive(true)
         }
     }
     const handleSubmit = (event) => {
@@ -404,7 +402,7 @@ function Contact() {
                     </Col>
                     
                     </Row>
-                    <div><label for="language" className='my-2'><p>Is your countrying adress outside Canada?</p></label><br />
+                    <div><label for="language" className='my-2'><p>Preferred language<span className='text-danger'>*</span></p></label><br />
                 <select id="language" name='language' className='my-2 date-input-mail' >
                 <option value="En">English</option>
                 <option value="Frc">France</option>
@@ -446,7 +444,7 @@ function Contact() {
                     </div>
                 }
                 </div>
-                <button className='btn  position-relative p-2'>
+                <button className='btn  position-relative p-2 checkbtn'>
                     <input type='checkbox' name="contactCheck" id='contactCheck' checked={check} className='position-absolute top-0 bottom-0 start-0 z-n1' /> <p className='px-3 '>did you enter all details</p>
                 </button>
                 <hr className='mt-5'></hr>
