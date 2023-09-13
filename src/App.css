@@ -5,6 +5,9 @@
     /* --theme-navbar:#172153; */
 }
 
+.btn:disabled{
+  opacity: 0 !important;
+}
 ::-webkit-scrollbar-track {
     display: none;
     border-radius: 10px;

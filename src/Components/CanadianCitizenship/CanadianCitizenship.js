@@ -11,6 +11,7 @@ const CanadianCitizenship = () => {
     const [isCanadian, setisCanadian] = useState(false)
     const [incomeIndia, setincomeIndia] = useState(false)
     const [isPrior,setIsPrior]= useState(false)
+    const [validBtn, setValidBtn] = useState(false)
 
 
     const canadianHandler =(event)=>{
@@ -19,18 +20,25 @@ const CanadianCitizenship = () => {
           if(event.target.value === "Yes"){
             setisCanadian(true);
             setincomeIndia(true)
+            setValidBtn(false)
           }else{
             setisCanadian(false)
             setincomeIndia(true)
+            setValidBtn(false)
           }
     }
     const priorHandler = (event)=>{
         if(event.target.value==="Yes"){
             setIsPrior(true)
+            setValidBtn(true)
         }
         else{
+            setValidBtn(true)
             setIsPrior(false)
         }
+    }
+    const CanadianCitizenshipHandler = (event)=>{
+        event.preventDefault()
     }
   return (
     <Container className='canadian'>
@@ -39,11 +47,12 @@ const CanadianCitizenship = () => {
                 <img src={flag} alt="flag" />
             </div>
         </div>
+            <form onSubmit={CanadianCitizenshipHandler}>
         <div><h6 className='text-center'>Are you a Canadian citizen?</h6></div>
-        <form className='statusSinle' onChange={canadianHandler}>
+        <div className='statusSinle' onChange={canadianHandler}>
 
             <ul>
-            <li><input type="radio" name="canadian" id="CanadianYes" value="Yes" />
+            <li><input type="radio" name="canadian" id="CanadianYes" value="Yes" required/>
               <label for="CanadianYes">
                 <div className='imgbar single d-flex justify-content-center align-items-center'><p>Yes</p></div>
             </label>
@@ -54,16 +63,16 @@ const CanadianCitizenship = () => {
               </label>
             </li>
             </ul>
-        </form>
+        </div>
 
         {isCanadian&&  <div className='py-4'>
-                <div><h6 className='text-center text-grey'>Do you authorize the CRA to share your information with Elections Canada to update the National Register of Electors?</h6></div>
-                 <form className='statusSinle'>
+                <div><h6 className='text-center text-grey'>Do you authorize the CRA to share your indivation with Elections Canada to update the National Register of Electors?</h6></div>
+                 <div className='statusSinle'>
                     <div className='d-flex justify-content-center'>
                        <Nav.Link><p className='d-inline'>Learn more?</p></Nav.Link> 
                     </div>
                     <ul>
-                    <li><input type="radio" name="isCanadian" id="iscanadaYes" value="Yes" />
+                    <li><input type="radio" name="isCanadian" id="iscanadaYes" value="Yes" required />
                     <label for="iscanadaYes">
                         <div className='imgbar single d-flex justify-content-center align-items-center'><p>Yes</p></div>
                     </label>
@@ -74,17 +83,18 @@ const CanadianCitizenship = () => {
                     </label>
                     </li>
                     </ul>
-                    </form>
+                    </div>
                     
                     
         </div>}
+
         {incomeIndia && 
         <div>
             <div className='py-4'>
             <div><h6 className='text-center text-grey'>Do you have income that is exempt from tax under aindian act?</h6></div>
-             <form className='statusSinle'>
+             <div className='statusSinle'>
                 <ul>
-                <li><input type="radio" name="canadian-india" id="canada-indiaYes" value="Yes" />
+                <li><input type="radio" name="canadian-india" id="canada-indiaYes" value="Yes" required />
                 <label for="canada-indiaYes">
                     <div className='imgbar single d-flex justify-content-center align-items-center'><p>Yes</p></div>
                 </label>
@@ -95,17 +105,17 @@ const CanadianCitizenship = () => {
                 </label>
                 </li>
                 </ul>
-                </form>
+                </div>
                 
                 </div>
                 <div className='py-4'>
                 <div><h6 className='text-center text-grey'>Are you filing an income tax return with the CRA for the first time?</h6></div>
-                 <form className='statusSinle'>
+                 <div className='statusSinle'>
                     <div className='d-flex justify-content-center'>
                        <Nav.Link><p className='d-inline'>Learn more?</p></Nav.Link> 
                     </div>
                     <ul>
-                    <li><input type="radio" name="CRA" id="CRAfirstYes" value="Yes" />
+                    <li><input type="radio" name="CRA" id="CRAfirstYes" value="Yes" required/>
                     <label for="CRAfirstYes">
                         <div className='imgbar single d-flex justify-content-center align-items-center'><p>Yes</p></div>
                     </label>
@@ -116,7 +126,7 @@ const CanadianCitizenship = () => {
                     </label>
                     </li>
                     </ul>
-                    </form>
+                    </div>
                     
         </div>
         <div className='py-4'>
@@ -126,12 +136,12 @@ const CanadianCitizenship = () => {
             </div>
         </div>
                 <div><h6 className='text-center text-grey'>Do you need to file your tax return for any prior year?</h6></div>
-                 <form className='statusSinle' onChange={priorHandler}>
+                 <div className='statusSinle' onChange={priorHandler}>
                     <div className='d-flex justify-content-center'>
                        <Nav.Link><p className='d-inline'>Learn more?</p></Nav.Link> 
                     </div>
                     <ul>
-                    <li><input type="radio" name="priortax" id="priorYes" value="Yes" />
+                    <li><input type="radio" name="priortax" id="priorYes" value="Yes" required />
                     <label for="priorYes">
                         <div className='imgbar single d-flex justify-content-center align-items-center'><p>Yes</p></div>
                     </label>
@@ -142,7 +152,7 @@ const CanadianCitizenship = () => {
                     </label>
                     </li>
                     </ul>
-                    </form>
+                    </div>
                     
                     
         </div>
@@ -164,8 +174,10 @@ const CanadianCitizenship = () => {
         <hr className='mt-5'></hr>
      <div className='d-flex justify-content-between'>
       <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/> back</div>
-      <div className='btn continue-btn'>Continue</div>
+      <button className='btn continue-btn' disabled={!validBtn}>Continue</button>
       </div> 
+        </form>
+        
     </Container>
   )
 }
