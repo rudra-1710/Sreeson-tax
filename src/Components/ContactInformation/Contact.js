@@ -321,10 +321,12 @@ function Contact() {
     }
     const handleSubmit = (event) => {
         const form = event.currentTarget;
+        event.preventDefault()
         if (form.checkValidity() === false) {
           event.preventDefault();
           event.stopPropagation();
         }
+        console.log(event)
         // setValidated(true);
       };
 
@@ -336,7 +338,7 @@ function Contact() {
                     <div className='contact-form'>
                     <div>
                 <label className='my-2'><p><b>Is your mailing adress outside Canada?</b></p></label><br />
-                <select id="mail" name='mail' className='my-2 date-input-mail' onChange={mailHandler} >
+                <select id="mail" name='mail' required className='my-2 date-input-mail' onChange={mailHandler} >
                 <option value="No">No</option>
                 <option value="Yes">Yes</option>
                 </select>
@@ -345,11 +347,11 @@ function Contact() {
             {isOutside && <p className='my-4'>If your mailing adress is outside of Canada, you won't be abel to file your return using CRA's NETFILE service.</p>}
             </div>
                     <label for="country" className='my-2'><p><b>Is your countrying adress outside Canada?</b></p></label><br />
-                <select id="country" name='country' className='my-2 date-input-mail' >
-                <option value="No">--select--</option>
-                {country.map(name=>{
+                <select id="country" required name='country' className='my-2 date-input-mail' >
+                <option value="" hidden>--select--</option>
+                {country.map((name,index)=>{
                     return(
-                        <option value={name.code}>{name.name}</option>
+                        <option value={name.code} key={index}>{name.name}</option>
                     )
                 })}
                 </select>
@@ -404,7 +406,7 @@ function Contact() {
                {islive && <div className='my-3' onChange={mailaddress}>
                 <p className='mb-2'>Is your current province of residence the same as yours mailing adress above?</p>
                 <div className='d-flex align-items-center'>
-                <input name="mailaddress" className='m-1' type="radio" value="Yes" id="mailaddressyes"/> <label for="mailaddressyes">Yes</label><br />
+                <input name="mailaddress" className='m-1' type="radio" value="Yes" id="mailaddressyes" required/> <label for="mailaddressyes">Yes</label><br />
                 </div>
                 <div className='d-flex align-items-center'>
                 <input name="mailaddress" className='m-1' type="radio" value="No" id="mailaddressNo" /> <label for="mailaddressNo">No</label><br />
@@ -416,7 +418,7 @@ function Contact() {
                             <select id="territory" name='territory' className='my-2 date-input-mail' >
                                 <option>--Select--</option>
                                 {provin.map((name,index)=>{
-                                    return(<option key={index}>{name}</option>)
+                                    return(<option key={index} value={name}>{name}</option>)
                                 })}
                             </select>
                     </div>
@@ -424,7 +426,7 @@ function Contact() {
                 <div className='my-3' onChange={mailChangeHandler}>
                 <p className='mb-2'>Did you change your mail address this year?</p>
                 <div className='d-flex align-items-center'>
-                <input name="mailchange" className='m-1' type="radio" value="Yes" id="mailchangeyes"/> <label for="mailchangeyes">Yes</label><br />
+                <input name="mailchange" className='m-1' type="radio" value="Yes" id="mailchangeyes" required/> <label for="mailchangeyes">Yes</label><br />
                 </div>
                 <div className='d-flex align-items-center'>
                 <input name="mailchange" className='m-1' type="radio" value="No" id="mailchangeNo" /> <label for="mailchangeNo">No</label><br />
@@ -441,7 +443,7 @@ function Contact() {
                   <div className='d-flex justify-content-between'>
                     <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
                       back</div>
-                    <button className='btn continue-btn'><Link to="tax-info">Continue</Link></button>
+                    <button className='btn continue-btn'>continue</button>
                   </div>
                 </Form>
                 </div>

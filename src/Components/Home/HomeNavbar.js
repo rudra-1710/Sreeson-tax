@@ -1,6 +1,6 @@
 import React from 'react'
 import { Accordion, Row, Col, Nav } from 'react-bootstrap';
-import logo from "../../assets/images/box.png"
+import logo from "../../assets/images/sreeson.png"
 
 import "./HomeNavbar.css"
 import { Link } from 'react-router-dom';

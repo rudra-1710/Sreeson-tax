@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import { Container } from 'react-bootstrap';
 import "./British.scss"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import bc from "../../assets/images/British_Columbia.png"
 
 
-const British = () => {
+const British = (props) => {
 
     const [isBMove, setIsBMove] = useState(false)
     const [isNisga, setIsNisga] = useState(false)
@@ -19,16 +17,20 @@ const British = () => {
         if(event.target.value === "Yes"){
             setIsBMove(true);
             setIsNisga(true)
+            props.btnHandler(false)
           }else{
             setIsBMove(false)
             setIsNisga(true)
+            props.btnHandler(false)
           }
     }
     const NisgaHandler = (event)=>{
         console.log(event.target.value)
         if(event.target.value === "Yes"){
             setIsNigaYes(true)
+            props.btnHandler(false)
           }else{
+            props.btnHandler(true)
             setIsNigaYes(false)
           }
     }
@@ -38,18 +40,32 @@ const British = () => {
         if(event.target.value === "Yes"){
             setisNigaCitizen(true)
             setisNigaNo(false)
+            props.btnHandler(false)
           }else{
             setisNigaCitizen(false)
             setisNigaNo(true)
+            props.btnHandler(false)
           }
     }
     const TsawwassenHandler = (event)=>{
         console.log(event.target.value)
         if(event.target.value === "Yes"){
             setisTsawwassen(true)
+            props.btnHandler(false)
           }else{
+            props.btnHandler(true)
             setisTsawwassen(false)
           }
+    }
+    const nisgaCitizenHandler = (event)=>{
+        if (event.target.value){
+            props.btnHandler(true)
+        }
+    }
+    const tsawwassenMemHandler = (event)=>{
+        if (event.target.value){
+            props.btnHandler(true)
+        }
     }
 
   return (
@@ -59,28 +75,28 @@ const British = () => {
             <div className='territory '></div>
         </div>
         <div><h6 className='text-center'>Did you move anotherprovince/territory in 2022?</h6></div>
-        <form className='statusSinle' onChange={BritishHandler}>
+        <div className='statusSinle' onChange={BritishHandler}>
 
             <ul>
-            <li><input type="radio" name="test" id="BritishYes" value="Yes" />
+            <li><input type="radio" name="britishCol" id="BritishYes" value="Yes" />
               <label for="BritishYes">
                 <div className='imgbar single d-flex justify-content-center align-items-center'><p>Yes</p></div>
             </label>
             </li>
-            <li><input type="radio" name="test" id="BritishNo" value="No" />
+            <li><input type="radio" name="britishCol" id="BritishNo" value="No" />
               <label for="BritishNo">
                 <div className='imgbar married d-flex justify-content-center align-items-center'><p>No</p></div>
               </label>
             </li>
             </ul>
-        </form>
+        </div>
 
         {isBMove&& <div className='py-4'>
           <h6 className='text-center'>When did you move?</h6>
           <div className='d-flex justify-content-center'>
             <div>
             <label for="Albertadate" className='my-2'><p>An apporximate date is OK</p></label>
-        <input type='date' id="Albertadate" name='Albertadate' className='my-2 date-input' />
+        <input type='date' required id="Albertadate" name='Albertadate' className='my-2 date-input' />
             </div>
         </div>
         </div>}
@@ -93,20 +109,20 @@ const British = () => {
             </div>
         </div>
                 <div><h6 className='text-center'>Did you live within Nisga'a Lands or Tsawwassen Lands on December 31,2022?</h6></div>
-                 <form className='statusSinle' onChange={NisgaHandler}>
+                 <div className='statusSinle' onChange={NisgaHandler}>
                     <ul>
-                    <li><input type="radio" name="test" id="NisgaYes" value="Yes" />
+                    <li><input type="radio" name="nisga-tsaww" id="NisgaYes" value="Yes" />
                     <label for="NisgaYes">
                         <div className='imgbar single d-flex justify-content-center align-items-center'><p>Yes</p></div>
                     </label>
                     </li>
-                    <li><input type="radio" name="test" id="NisgaNo" value="No" />
+                    <li><input type="radio" name="nisga-tsaww" id="NisgaNo" value="No" />
                     <label for="NisgaNo">
                         <div className='imgbar married d-flex justify-content-center align-items-center'><p>No</p></div>
                     </label>
                     </li>
                     </ul>
-                    </form>
+                    </div>
                     <div>
                         
                     </div>
@@ -115,41 +131,43 @@ const British = () => {
 
             {isNigaYes  &&
                 <div>
-                    <div><h6 className='text-center'>Do you live within Nisga'a Land on December 31, 2022?</h6></div>
-                 <form className='statusSinle' onChange={NisgaLandHandler}>
+                    <div><h6 className='text-center'>Did you live within Nisga'a Land on December 31, 2022?</h6></div>
+                 <div className='statusSinle' onChange={NisgaLandHandler}>
                     <ul>
-                    <li><input type="radio" name="test" id="NisgaLandYes" value="Yes" />
+                    <li><input type="radio" name="nisga" id="NisgaLandYes" value="Yes" />
                     <label for="NisgaLandYes">
                         <div className='imgbar single d-flex justify-content-center align-items-center'><p>Yes</p></div>
                     </label>
                     </li>
-                    <li><input type="radio" name="test" id="NisgaLandNo" value="No" />
+                    <li><input type="radio" name="nisga" id="NisgaLandNo" value="No" />
                     <label for="NisgaLandNo">
                         <div className='imgbar married d-flex justify-content-center align-items-center'><p>No</p></div>
                     </label>
                     </li>
                     </ul>
-                    </form>
+                    </div>
 
                     <div>
                         {isNigaYes && isNigaCitizen && isNigaCitizen && 
                             <div>
                                  <div>
                     <div><h6 className='text-center'>Are you a citizen of the Nisga'a Nation?</h6></div>
-                 <form className='statusSinle' >
+                 <div className='statusSinle' 
+                 onChange={nisgaCitizenHandler} 
+                 >
                     <ul>
-                    <li><input type="radio" name="test" id="NisgaCitizenYes" value="Yes" />
+                    <li><input type="radio" name="nisgaCitizen" id="NisgaCitizenYes" value="Yes" />
                     <label for="NisgaCitizenYes">
                         <div className='imgbar single d-flex justify-content-center align-items-center'><p>Yes</p></div>
                     </label>
                     </li>
-                    <li><input type="radio" name="test" id="NisgaCitizenNo" value="No" />
+                    <li><input type="radio" name="nisgaCitizen" id="NisgaCitizenNo" value="No" />
                     <label for="NisgaCitizenNo">
                         <div className='imgbar married d-flex justify-content-center align-items-center'><p>No</p></div>
                     </label>
                     </li>
                     </ul>
-                    </form>
+                    </div>
                 </div>
                             </div>
                         }
@@ -162,21 +180,21 @@ const British = () => {
         { isNigaYes && !isNigaCitizen && isNigaNo &&
                          <div>
                          <div>
-            <div><h6 className='text-center'>Do you live within Tsawwassen Land on December 31, 2022?</h6></div>
-         <form className='statusSinle' onChange={TsawwassenHandler} >
+            <div><h6 className='text-center'>Did you live within Tsawwassen Land on December 31, 2022?</h6></div>
+         <div className='statusSinle' onChange={TsawwassenHandler} >
             <ul>
-            <li><input type="radio" name="test" id="TsawwassenYes" value="Yes" />
+            <li><input type="radio" name="tsawwassen" id="TsawwassenYes" value="Yes" />
             <label for="TsawwassenYes">
                 <div className='imgbar single d-flex justify-content-center align-items-center'><p>Yes</p></div>
             </label>
             </li>
-            <li><input type="radio" name="test" id="TsawwassenNo" value="No" />
+            <li><input type="radio" name="tsawwassen" id="TsawwassenNo" value="No" />
             <label for="TsawwassenNo">
                 <div className='imgbar married d-flex justify-content-center align-items-center'><p>No</p></div>
             </label>
             </li>
             </ul>
-            </form>
+            </div>
         </div>
                     </div>}
         </div>
@@ -186,28 +204,23 @@ const British = () => {
              <div>
                 <div>
                    <div><h6 className='text-center'>Are you a member of the Tsawwassen First Nation?</h6></div>
-                   <form className='statusSinle' >
+                   <div className='statusSinle' onChange={tsawwassenMemHandler} >
                      <ul>
-                         <li><input type="radio" name="test" id="FirstTsawwassenYes" value="Yes" />
+                         <li><input type="radio" name="tsaww-member" id="FirstTsawwassenYes" value="Yes" />
                          <label for="FirstTsawwassenYes">
                         <div className='imgbar single d-flex justify-content-center align-items-center'><p>Yes</p></div>
                         </label>
                          </li>
-                         <li><input type="radio" name="test" id="FirstTsawwassenNo" value="No" />
+                         <li><input type="radio" name="tsaww-member" id="FirstTsawwassenNo" value="No" />
                           <label for="FirstTsawwassenNo">
                           <div className='imgbar married d-flex justify-content-center align-items-center'><p>No</p></div>
                           </label>
                          </li>
                      </ul>
-                  </form>
+                  </div>
                </div>
                     </div>}
 
-        <hr className='mt-5'></hr>
-     <div className='d-flex justify-content-between'>
-      <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/> back</div>
-      <div className='btn continue-btn'>Continue</div>
-      </div> 
         </Container>
     </>
   )

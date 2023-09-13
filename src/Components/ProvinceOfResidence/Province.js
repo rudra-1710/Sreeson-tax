@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Nav } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import "./Province.scss"
 import Alberta from './Alberta';
 import British from './British';
@@ -21,8 +23,16 @@ import NonResidentS217 from './NonResidentS217';
 
 const Province = () => {
 
+  // useEffect(()=>{
+  //   setvalidBtn(false)
+  // })
+  const [validBtn,setvalidBtn] = useState(false)
   const handleAlbertChange = (data) => {
     console.log(data, ' on ALbert')
+  }
+  const btnstate = (data)=>{
+    setvalidBtn(data)
+    console.log(data)
   }
 
   const provs = [
@@ -30,119 +40,119 @@ const Province = () => {
       key: 'Alberta',
       value: 'Alberta',
       component: () => {
-        return (<Alberta changeDt={handleAlbertChange} />)
+        return (<Alberta changeDt={handleAlbertChange} btnHandler={btnstate} />)
       }
     },
     {
       key: 'british_columbia',
       value: 'British Columbia',
       component: () => {
-        return (<British />)
+        return (<British btnHandler={btnstate}/>)
       }
     },
     {
       key: 'manitoba',
       value: 'Manitoba',
       component: () => {
-        return (<Manitoba />)
+        return (<Manitoba btnHandler={btnstate}/>)
       }
     },
     {
       key: 'New_Brunswick',
       value: 'New Brunswick',
       component: () => {
-        return (<Brunswick />)
+        return (<Brunswick btnHandler={btnstate} />)
       }
     },
     {
       key: 'Newfoundland_and_Labrador',
       value: 'Newfoundland and Labrador',
       component: () => {
-        return (<NewfoundLand />)
+        return (<NewfoundLand btnHandler={btnstate}/>)
       }
     },
     {
       key: 'Northwest_Territories',
       value: 'Northwest Territories',
       component: () => {
-        return (<Northwest />)
+        return (<Northwest btnHandler={btnstate} />)
       }
     },
     {
       key: 'Nova_Scotia',
       value: 'Nova Scotia',
       component: () => {
-        return (<Nova />)
+        return (<Nova btnHandler={btnstate} />)
       }
     },
     {
       key: 'Nunavut',
       value: 'Nunavut',
       component: () => {
-        return (<Nunavut />)
+        return (<Nunavut btnHandler={btnstate}/>)
       }
     },
     {
       key: 'Ontario',
-      value: 'ManitOntariooba',
+      value: 'Ontario',
       component: () => {
-        return (<Ontario />)
+        return (<Ontario btnHandler={btnstate} />)
       }
     },
     {
       key: 'Prince_Edward_Island',
       value: 'Prince Edward Island',
       component: () => {
-        return (<Prince />)
+        return (<Prince btnHandler={btnstate} />)
       }
     },
     {
       key: 'Quebec',
       value: 'Québec',
       component: () => {
-        return (<Quebec />)
+        return (<Quebec btnHandler={btnstate} />)
       }
     },
     {
       key: 'Saskatchewan',
       value: 'Saskatchewan',
       component: () => {
-        return (<Saskatchewan />)
+        return (<Saskatchewan btnHandler={btnstate} />)
       }
     },
     {
       key: 'Yukon_Territories',
       value: 'Yukon Territories',
       component: () => {
-        return (<Yukon />)
+        return (<Yukon btnHandler={btnstate} />)
       }
     },
     {
       key: 'Non-Resident',
       value: 'Non-Resident',
       component: () => {
-        return (<NonResident />)
+        return (<NonResident btnHandler={btnstate}/>)
       }
     },
     {
       key: 'Deemed_resident',
       value: 'Deemed resident',
       component: () => {
-        return (<DeemedResident />)
+        return (<DeemedResident btnHandler={btnstate} />)
       }
     },
     {
       key: 'Non-Resident_S.216',
       value: 'Non-Resident S.216',
       component: () => {
-        return (<NonResidentS216 />)
+        return (<NonResidentS216 btnHandler={btnstate} />)
       }
     },
     {
       key: 'Non-Resident_S.217',
       value: 'Non-Resident S.217',
       component: () => {
-        return (<NonResidentS217 />)
+        return (<NonResidentS217 btnHandler={btnstate} />)
       }
     },
   ]
@@ -156,10 +166,13 @@ const Province = () => {
     console.log(contrySelector);
     console.log(Object.keys(contrySelector))
   }
-
+  const territoryHandler = (event)=>{
+    event.preventDefault()
+    console.log(event)
+  }
   return (
-<Container>
-        <div>
+<Container className='py-5'>
+        <form onSubmit={territoryHandler}>
          <h5 className='text-center my-3'>Where did you live on December 31, 2022?</h5>
             <p>
                 <Nav.Link href='#' className='text-center'>What if I'm a non-resident or left Canada during the tax year?</Nav.Link>
@@ -168,20 +181,24 @@ const Province = () => {
               <div>
                 <label for="province" className='my-2'><p>Province/territory:</p></label><br />
                 <select id="province" name='province' className='my-2 date-input-province' onChange={provinceHandler} >
-                <option value="">--Select --</option>
+                <option value="" hidden>--Select --</option>
                   {provs.map((item,index) =>{
                     return (<option key={item.key} value={index}>{item.value}</option>)
                   })}
                 </select>
               </div>
             </div>
-          </div>  
-        <div>
-          
+
          {Object.keys(contrySelector).length >0 && contrySelector?.component()}
           
-          
-        </div>
+         <hr className='mt-5'></hr>
+         <div className='d-flex justify-content-between'>
+           <div className='d-flex align-items-center btn'>
+              <FontAwesomeIcon icon={faAngleLeft} className='pe-1'/> back
+            </div>
+            <button className='btn continue-btn' disabled={!validBtn}  >Continue</button>
+          </div> 
+        </form>
 </Container>
   )
 }

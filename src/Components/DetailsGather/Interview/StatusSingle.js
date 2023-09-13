@@ -3,17 +3,22 @@ import singel from "../../../assets/images/single.png";
 import "./StatusSingel.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
+import { Container } from 'react-bootstrap';
 
 const StatusSingle = () => {
   const [isYes, setIsyes] = useState(false)
   const [isSeparated, setIsSeparated] = useState(false);
-
+  const [valiBtn, setvaliBtn] = useState(false)
+  // const {isvalid} = formsta
+  // console.log(isvalid)
   const singelStatusHandler=(event)=>{
     if (event.target.value === "Yes"){
       setIsyes(true)
+      setvaliBtn(false)
     } 
      else {
       setIsyes(false)
+      setvaliBtn(true)
     }
     console.log(event.target.value)
 }
@@ -21,16 +26,28 @@ const StatusSingle = () => {
   const singeSeperatedHandler =(event)=>{
     if (event.target.value === "Separated") {
       setIsSeparated(true)
+      setvaliBtn(false)
     }
     else{
       setIsSeparated(false)
+      setvaliBtn(true)
     }
     console.log(event.target.value)
   }
-
+  
+  const singelHandler =(event)=>{
+    event.preventDefault()
+    setvaliBtn(true)
+    console.log(event)
+  }
+  const pastStatusHandler = (event)=>{
+    if(event.target.value){
+      setvaliBtn(true)
+    }
+  }
 
   return (
-    <>
+    <Container className="py-5">
         <div className='my-2 mt-5'>
             <p className='text-center'>If you are Separated,divorced or widowed, your marital status remain the same 
                 until you get divorced, remarry,or form a new common-law union</p>
@@ -39,14 +56,14 @@ const StatusSingle = () => {
         <div className='d-flex justify-content-center my-2'>
             <img src={singel} alt="single logo" className='singellogo' />
         </div>
-        <div>
+        <form onSubmit={singelHandler}>
           <div className='text-center'>
             <h5>Did your marital status change in 2022?</h5>
           </div>
-          <form className='statusSinle' onChange={singelStatusHandler}>
+          <div className='statusSinle' onChange={singelStatusHandler}>
 
         <ul>
-         <li><input type="radio" name="test" id="singelYes" value="Yes" />
+         <li><input type="radio" name="test" id="singelYes" value="Yes" required />
            <label for="singelYes">
              <div className='imgbar single d-flex justify-content-center align-items-center'><p>Yes</p></div>
          </label>
@@ -58,18 +75,18 @@ const StatusSingle = () => {
         </li>
       </ul>
 
-    </form>
+          </div>
 
-   {isYes && <form>
+   {isYes && <div>
       <div className='text-center mt-5'>
         <div>
         <label for="statusSingleChange" className='my-2'>When did your status change? - dd/mm</label><br />
-        <input type='date' id="statusSingleChange" name='statuschange' className='my-2 date-input' />
+        <input type='date' required id="statusSingleChange" min="2022-01-01" max="2022-12-31" name='event_date' className='my-2 date-input' />
         </div>
         <div>
         <label for="statuspresent1" className='my-2'>What was your marital status before the change?</label><br />
-        <select id="statuspresent1" name='statuspresent1' className='my-2 date-input' onChange={singeSeperatedHandler}>
-          <option value="none">select</option>
+        <select id="statuspresent1" name='previous_status' required className='my-2 date-input' onChange={singeSeperatedHandler}>
+          <option value="" hidden >--select--</option>
           <option value="Married">Married</option>
           <option value="Living common-law">Living common-law</option>
           <option value="Divorced">Divorced</option>
@@ -79,15 +96,15 @@ const StatusSingle = () => {
         </select>
         </div>
       </div>
-    </form> }
-     </div>  
+    </div> }
+      
 
-     <div>
-   {isSeparated && <form className='statusSinle my-4' >
+     
+   {isSeparated && isYes && <div className='statusSinle my-4' onChange={pastStatusHandler}>
       <h5 className='text-center'>Were you married or living common-law in 2022?</h5>
 
 <ul>
- <li><input type="radio" name="singelSeperated" id="singeSeperatedlYes" value="Yes" />
+ <li><input type="radio" name="singelSeperated" id="singeSeperatedlYes" value="Yes" required/>
    <label for="singeSeperatedlYes">
      <div className='imgbar single d-flex justify-content-center align-items-center'><p>Yes</p></div>
  </label>
@@ -99,15 +116,16 @@ const StatusSingle = () => {
 </li>
 </ul>
 
-</form>}
-      </div> 
-
-     <hr></hr>
+</div>}
+<hr></hr>
      <div className='d-flex justify-content-between'>
       <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>back</div>
-      <div className='btn continue-btn'>Continue</div>
-      </div>  
-    </>
+      <button className='btn continue-btn' disabled={!valiBtn}>Continue</button>
+      </div>
+</form>
+
+      
+    </Container>
   )
 }
 

@@ -3,40 +3,56 @@ import divorced from "../../../assets/images/divorce.png"
 import "./StatusDivorced.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
+import { Container } from 'react-bootstrap';
 
 const StatusDivorced = () => {
 const [isDivorceYes, setisDivorceYes] = useState(false)
 const [isSeparated, setIsSeparated] = useState(false)
+const [validBtn,setvalidBtn] = useState(false)
+
 const divorcedStatusHandler = (event)=>{
   if (event.target.value === "Yes"){
     setisDivorceYes(true)
+    setvalidBtn(false)
   } 
    else {
     setisDivorceYes(false)
+    setvalidBtn(true)
   }
     console.log(event.target.value)
 }
 const singeSeperatedDivorceHandler =(event)=>{
   if (event.target.value === "Separated") {
     setIsSeparated(true)
+    setvalidBtn(false)
   }
   else{
+    setvalidBtn(true)
     setIsSeparated(false)
   }
   console.log(event.target.value)
 }
+const paststatusHandler =(event)=>{
+  if (event.target.value){
+    setvalidBtn(true)
+  }
+}
 
+const divorcedHandler = (event)=>{
+  event.preventDefault()
+  console.log(event)
+}
   return (
-    <>
+    <Container className='py-5'>
 
     <div className='d-flex justify-content-center my-2 mt-5'>
         <img src={divorced} alt="divorced logo" className='singellogo' />
     </div>
-    <div>
+    <form onSubmit={divorcedHandler}>
       <div className='text-center'>
         <h5>Did your marital status change in 2022?</h5>
       </div>
-      <form className='statusDivorced' onChange={divorcedStatusHandler}>
+      <div className='statusDivorced' onChange={divorcedStatusHandler}>
 
     <ul>
      <li><input type="radio" name="test" id="divorcedYes" value="Yes" />
@@ -51,17 +67,17 @@ const singeSeperatedDivorceHandler =(event)=>{
     </li>
   </ul>
 
-</form>
-{isDivorceYes && <form>
+</div>
+{isDivorceYes && <div>
       <div className='text-center mt-5'>
         <div>
         <label for="statusSingleChange" className='my-2'>When did your status change? - dd/mm</label><br />
-        <input type='date' id="statusSingleChange" name='statuschange' className='my-2 date-input' />
+        <input type='date' required id="statusSingleChange" name='event_date'  min={new Date().getFullYear()-1+"-01-01"} max={new Date().getFullYear()-1+"-12-31"}  className='my-2 date-input' />
         </div>
         <div>
         <label for="statuspresent1" className='my-2'>What was your marital status before the change?</label><br />
-        <select id="statuspresent1" name='statuspresent1' className='my-2 date-input' onChange={singeSeperatedDivorceHandler}>
-          <option value="none">select</option>
+        <select id="statuspresent1" name='previous_status' required className='my-2 date-input' onChange={singeSeperatedDivorceHandler}>
+          <option value="" hidden>select</option>
           <option value="Married">Married</option>
           <option value="Living common-law">Living common-law</option>
           <option value="Divorced">Divorced</option>
@@ -71,10 +87,8 @@ const singeSeperatedDivorceHandler =(event)=>{
         </select>
         </div>
       </div>
-    </form> }
- </div>    
- <div>
-   {isSeparated && <form className='statusSinle my-4' >
+    </div> }
+   {isSeparated && <div className='statusSinle my-4' onChange={paststatusHandler} >
       <h5 className='text-center'>Were you married or living common-law in 2022?</h5>
 
 <ul>
@@ -90,15 +104,16 @@ const singeSeperatedDivorceHandler =(event)=>{
 </li>
 </ul>
 
-</form>}
-      </div> 
-
-     <hr></hr>
+</div>}
+<hr></hr>
      <div className='d-flex justify-content-between'>
       <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/> back</div>
-      <div className='btn continue-btn'>Continue</div>
-      </div>   
-</>
+      <button className='btn continue-btn' disabled={!validBtn} >Continue</button>
+      </div>
+      </form> 
+
+        
+</Container>
   )
 }
 

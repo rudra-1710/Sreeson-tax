@@ -6,13 +6,25 @@ import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 
 const StatusWidowed = () => {
     const [isWidowYes, setIsWidowYes] = useState(false)
+    const [validBtn,setvalidBtn] = useState(false)
     const widowedStatusHandler = (event)=>{
       if (event.target.value==="Yes"){
         setIsWidowYes(true)
+        setvalidBtn(false)
       }else{
+        setvalidBtn(true)
         setIsWidowYes(false)
       }
         console.log(event.target.value)
+    }
+    const paststatusHandler =(event)=>{
+      if (event.target.value){
+        setvalidBtn(true)
+      }
+    }
+    const widowedHandler = (event)=>{
+      event.preventDefault()
+      console.log(event)
     }
   return (
     <>
@@ -20,11 +32,11 @@ const StatusWidowed = () => {
     <div className='d-flex justify-content-center my-2 mt-5'>
         <img src={widowed} alt="widowed logo" className='singellogo' />
     </div>
-    <div>
+    <form onSubmit={widowedHandler}>
       <div className='text-center'>
         <h5>Did your marital status change in 2022?</h5>
       </div>
-      <form className='statusWidowed' onChange={widowedStatusHandler}>
+      <div className='statusWidowed' onChange={widowedStatusHandler}>
 
     <ul>
      <li><input type="radio" name="test" id="widowedYes" value="Yes" />
@@ -39,19 +51,19 @@ const StatusWidowed = () => {
     </li>
   </ul>
 
-</form>
-{isWidowYes && <form>
+</div>
+{isWidowYes && <div>
       <div className='text-center mt-5'>
         <div>
         <label for="statusWidowChange" className='my-2'>When did your status change? - dd/mm</label><br />
-        <input type='date' id="statusWidowChange" name='statuschange' className='my-2 date-input' />
+        <input type='date' required id="statusWidowChange" name='event_date' className='my-2 date-input' min={new Date().getFullYear()-1+"-01-01"} max={new Date().getFullYear()-1+"-12-31"}  />
         </div>
         <div>
         <label for="statuspresent4" className='my-2'>What was your marital status before the change?</label><br />
-        <select id="statuspresent4" name='statuspresent4' className='my-2 date-input' >
-          <option value="none">select</option>
+        <select id="statuspresent4" name='previous_status' onChange={paststatusHandler} className='my-2 date-input' >
+          <option value="" hidden>--select--</option>
           <option value="Married">Married</option>
-          <option value="Living common-law">Living common-law</option>
+          <option value="Living-common-law">Living common-law</option>
           <option value="Divorced">Divorced</option>
           <option value="Separated">Separated</option>
           <option value="Single">Single</option>
@@ -59,13 +71,14 @@ const StatusWidowed = () => {
         </select>
         </div>
       </div>
-    </form> }
- </div>  
- <hr></hr>
+    </div> }
+    <hr></hr>
 <div className='d-flex justify-content-between'>
  <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/> back</div>
- <div className='btn continue-btn'>Continue</div>
- </div>   
+ <button className='btn continue-btn' disabled={!validBtn}>Continue</button>
+ </div> 
+ </form>  
+   
 </>
   )
 }
