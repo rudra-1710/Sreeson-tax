@@ -20,9 +20,9 @@ function TaxReturnBasicDetails({user_id}) {
   const handleLastName = (event) => setLast_name(event.target.value);
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
-      event.preventDefault();
       event.stopPropagation();
     }
 
@@ -35,7 +35,10 @@ function TaxReturnBasicDetails({user_id}) {
     putApiCall(`user/${user_id}/update`, user).then(res => 
       {
 
-        navigate('/application/marital-status')
+        if(res) {
+
+          navigate('/application/marital-status')
+        }
         console.log(res)
       }
     ).catch(err => console.log(err));
@@ -73,7 +76,7 @@ function TaxReturnBasicDetails({user_id}) {
                   <div className='d-flex justify-content-between'>
                     <Link to="/"><div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
                       back</div></Link>
-                      <Link to="/application/marital-status"><div className='btn continue-btn'>Continue</div></Link>
+                      <button type="submit" className='btn continue-btn'>Continue</button>
                   </div>
                 </Form>
               </div>
