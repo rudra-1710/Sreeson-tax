@@ -102,7 +102,7 @@ const Helpbar = () => {
                               <Nav.Link className='rounded-0'><Link to="tax-info"> <p className='nav-text rounded-0'>Personal info summery</p></Link></Nav.Link>
 
                               <Nav.Link className='rounded-0'><Link to="whats"><p className='nav-text rounded-0'>What's new Tax</p></Link></Nav.Link>
-                              <Nav.Link className='rounded-0'><Link to="tax-info"><p className='nav-text rounded-0'>Get strated</p></Link></Nav.Link>
+                              <Nav.Link className='rounded-0'><Link to="get-start"><p className='nav-text rounded-0'>Get strated</p></Link></Nav.Link>
                              <Nav.Link className='rounded-0'><p className='nav-text rounded-0'>Personal Tax profile for Hemanth</p></Nav.Link>
 
                             </div>

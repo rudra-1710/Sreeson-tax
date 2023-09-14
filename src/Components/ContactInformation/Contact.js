@@ -449,8 +449,12 @@ function Contact() {
                 </button>
                 <hr className='mt-5'></hr>
                   <div className='d-flex justify-content-between'>
-                    <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
-                      back</div>
+                    <div className='d-flex align-items-center btn back-btn'>
+                        <Link>
+                        <FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
+                         back
+                        </Link>
+                    </div>
                     <button className='btn continue-btn' hidden={!validBtn}>continue</button>
                   </div>
                 </Form>

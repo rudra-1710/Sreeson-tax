@@ -11,13 +11,27 @@ function TaxReturnBasicDetails({user_id}) {
   const navigate = useNavigate();
 
   const [first_name, setFirst_name] = useState("");
-
   const [middle_name, setMiddle_name] = useState("");
   const [last_name, setLast_name] = useState("");
+  const [validBtn,setValidBtn] = useState(false)
 
-  const handleFirstName = (event) => setFirst_name(event.target.value);
+  const handleFirstName = (event) => {
+    setFirst_name(event.target.value);
+    if(event.target.value && last_name){
+      setValidBtn(true)
+    }else{
+      setValidBtn(false)
+    }
+  }
   const handleMiddleName = (event) => setMiddle_name(event.target.value);
-  const handleLastName = (event) => setLast_name(event.target.value);
+  const handleLastName = (event) => {
+    setLast_name(event.target.value);
+    if(event.target.value && first_name){
+      setValidBtn(true)
+    }else{
+      setValidBtn(false)
+    }
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -76,7 +90,7 @@ function TaxReturnBasicDetails({user_id}) {
                   <div className='d-flex justify-content-between'>
                     <Link to="/"><div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
                       back</div></Link>
-                      <button type="submit" className='btn continue-btn'>Continue</button>
+                      <button type="submit" className='btn continue-btn' disabled={!validBtn}>Continue</button>
                   </div>
                 </Form>
               </div>

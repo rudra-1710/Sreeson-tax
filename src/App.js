@@ -15,6 +15,9 @@ import GetStartedForm from './Components/GetStarted/GetStartedForm';
 import MaritalStatus from './Components/DetailsGather/Interview/MaritalStatus';
 import WhatsNew from './Components/WhatsNew/WhatsNew';
 import ChangeInResidence from './Components/ChangeInResidence/ChangeInResidence';
+import GetStart from './Components/GetStarted/GetStart';
+import DependantDetails from './Components/DependantsInfo/DependantDetails';
+import ChangeInForm from './Components/ChangeInResidence/ChangeInForm';
 
 
 const App = () => {
@@ -35,6 +38,9 @@ const App = () => {
           <Route path='whats' element={<WhatsNew />}/>
           <Route path="change" element={<ChangeInResidence />} />
           <Route path='tax-info' element={<GetStartedForm/>} />
+          <Route path='get-start' element={<GetStart />} />
+          <Route path='dependants-info' element={<DependantDetails />} />
+          <Route path ="change-res-yes" element={<ChangeInForm />}/>
         </Route>
         <Route path='/' element={<Home/>} />
       </Routes>

@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import taxlogo from "../../assets/images/tax.png"
 import ok from "../../assets/images/ok-symbol.png"
+import { Link } from 'react-router-dom';
 
 const CanadianCitizenship = () => {
     const [isCanadian, setisCanadian] = useState(false)
@@ -172,8 +173,8 @@ const CanadianCitizenship = () => {
          </div>   
         }
         <hr className='mt-5'></hr>
-     <div className='d-flex justify-content-between'>
-      <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/> back</div>
+     <div className='d-flex justify-content-between back-btn'>
+      <div className='d-flex align-items-center btn'><Link to="/application/change"><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/> back</Link></div>
       <button className='btn continue-btn' disabled={!validBtn}>Continue</button>
       </div> 
         </form>

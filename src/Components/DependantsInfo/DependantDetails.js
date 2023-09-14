@@ -2,22 +2,35 @@ import React, { useState } from 'react'
 import { Col, Container, Form, Row } from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const DependantDetails = () => {
-    const relation = ["Son","Daughter","Grandparent","Grandchild","Brother","Sister","Aunt","Uncle","Nephew","Niece","Father","Mother","Grandfather","Grandmother","Great-aunt","Great-uncle","Son-in-law","Daughter-in-law"]
-    const[dependentDetails,setdependentDetails] = useState({first_name:"",last_name:"",relation:"",dob:""})
+    const depDetails = useNavigate()
+    const dep_relation = ["Son","Daughter","Grandparent","Grandchild","Brother","Sister","Aunt","Uncle","Nephew","Niece","Father","Mother","Grandfather","Grandmother","Great-aunt","Great-uncle","Son-in-law","Daughter-in-law"]
+    const[dependentDetails,setdependentDetails] = useState({dep_first_name:"",dep_last_name:"",dep_relation:"",dep_dob:""})
     const [data, setData] = useState([])
+    const[detailForm, setdetailForm]= useState(true)
 
   const depDataHandler = (event)=>{
     setdependentDetails({...dependentDetails,[event.target.name]:event.target.value})
   }
     const dependentHandler = (event)=>{
         event.preventDefault();
+        setdetailForm(false)
         setData([...data,dependentDetails])
-        setdependentDetails({first_name:"",last_name:"",relation:"",dob:""})
+        setdependentDetails({dep_first_name:"",dep_last_name:"",dep_relation:"",dep_dob:""})
+        console.log(dependentDetails)
+        const dep_data = [...data,dependentDetails]
+        console.log(dep_data)
+        depDetails('/application/personal-info')
     }
     const formHandler = (event)=>{
         event.preventDefault()
+        setData([...data,dependentDetails])
+        setdependentDetails({dep_first_name:"",dep_last_name:"",dep_relation:"",dep_dob:""})
+            
+            
+        
     }
    
     const removeHandler = (event,indx)=>{
@@ -25,7 +38,7 @@ const DependantDetails = () => {
         let deldata = [...data];
         deldata.splice(indx,1)
         setData(deldata)
-        console.log(indx , data,deldata)
+        // console.log(indx , data,deldata)
     }
 
   return (
@@ -41,11 +54,10 @@ const DependantDetails = () => {
                     <Form.Control 
                     required
                     onChange={depDataHandler}
-                    name="first_name"
-                    value={item.first_name}
+                    name="dep_first_name"
+                    value={item.dep_first_name}
                     type='text'
                     className='date-input-mail'
-                    
                     />
                 </Form.Group>
                 </Col>
@@ -55,8 +67,8 @@ const DependantDetails = () => {
                     <Form.Control 
                     required
                     onChange={depDataHandler}
-                    name="last_name"
-                    value={item.last_name}
+                    name="dep_last_name"
+                    value={item.dep_last_name}
                     type='text'
                     className='date-input-mail'
                     
@@ -65,14 +77,13 @@ const DependantDetails = () => {
                 </Col>
                 <Col>
                  <Form.Group className='my-3'>
-                    <Form.Label><p className='my-2'>relationship</p></Form.Label><br />
-                    <select  className='date-input-mail' required value={item.relation} onChange={depDataHandler}
-                    name="relation">
+                    <Form.Label><p className='my-2'>dep_relationship</p></Form.Label><br />
+                    <select  className='date-input-mail' required value={item.dep_relation} onChange={depDataHandler}
+                    name="dep_relation">
                     <option selected  none>--Select--</option>
-                    {relation.map(rel=>{
+                    {dep_relation.map(rel=>{
                         return(
                             <option key={rel} 
-                            
                             >{rel}</option>
                         )
                     })}
@@ -85,8 +96,8 @@ const DependantDetails = () => {
                     <Form.Control 
                     required
                     onChange={depDataHandler}
-                    name="dob"
-                    value={item.dob}
+                    name="dep_dob"
+                    value={item.dep_dob}
                     type='date'
                     className='date-input-mail'
                     
@@ -103,15 +114,15 @@ const DependantDetails = () => {
             
             
             )})}
-                    <Row>
+                  <Row>
                         <Col>
                         <Form.Group className='my-3'>
                             <Form.Label><p className='my-2'>First name</p></Form.Label>
                             <Form.Control 
                             required
                             onChange={depDataHandler}
-                            name="first_name"
-                            value={dependentDetails.first_name}
+                            name="dep_first_name"
+                            value={dependentDetails.dep_first_name}
                             type='text'
                             className='date-input-mail'
                             placeholder=''
@@ -124,8 +135,8 @@ const DependantDetails = () => {
                             <Form.Control 
                             required
                             onChange={depDataHandler}
-                            name="last_name"
-                            value={dependentDetails.last_name}
+                            name="dep_last_name"
+                            value={dependentDetails.dep_last_name}
                             type='text'
                             className='date-input-mail'
                             placeholder=''
@@ -134,11 +145,11 @@ const DependantDetails = () => {
                         </Col>
                         <Col>
                          <Form.Group className='my-3'>
-                            <Form.Label><p className='my-2'>relationship</p></Form.Label><br />
-                            <select  className='date-input-mail' required value={dependentDetails.relation} onChange={depDataHandler}
-                            name="relation">
-                            <option selected  none>--Select--</option>
-                            {relation.map(rel=>{
+                            <Form.Label><p className='my-2'>dep_relationship</p></Form.Label><br />
+                            <select  className='date-input-mail' required value={dependentDetails.dep_relation} onChange={depDataHandler}
+                            name="dep_relation">
+                            <option value="" hidden>--Select--</option>
+                            {dep_relation.map(rel=>{
                                 return(
                                     <option key={rel} 
                                     
@@ -150,12 +161,12 @@ const DependantDetails = () => {
                         </Col>
                         <Col>
                         <Form.Group className='my-3'>
-                            <Form.Label><p className='my-2'>Last name</p></Form.Label>
+                            <Form.Label><p className='my-2'>date of birth</p></Form.Label>
                             <Form.Control 
                             required
                             onChange={depDataHandler}
-                            name="dob"
-                            value={dependentDetails.dob}
+                            name="dep_dob"
+                            value={dependentDetails.dep_dob}
                             type='date'
                             className='date-input-mail'
                             placeholder=''
@@ -164,14 +175,16 @@ const DependantDetails = () => {
                         </Col>
                     </Row>
                     <div className='my-4 d-flex justify-content-center'>
-                        <button className='btn continue-btn' onClick={dependentHandler}>Add another Dependent</button>
+                        <button className='btn continue-btn' 
+                        
+                        >Add another Dependent</button>
                     </div>
           
             <hr className='mt-5'></hr>
         <div className='d-flex justify-content-between'>
           <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
             back</div>
-          <div className='btn continue-btn'>Continue</div>
+          <button className='btn continue-btn ' onClick={dependentHandler}>Continue</button>
         </div>
         </form>
     </Container>

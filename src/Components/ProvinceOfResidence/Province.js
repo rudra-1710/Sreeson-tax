@@ -20,6 +20,7 @@ import NonResident from './NonResident';
 import DeemedResident from './DeemedResident';
 import NonResidentS216 from './NonResidentS216';
 import NonResidentS217 from './NonResidentS217';
+import { Link } from 'react-router-dom';
 
 const Province = () => {
 
@@ -193,8 +194,8 @@ const Province = () => {
           
          <hr className='mt-5'></hr>
          <div className='d-flex justify-content-between'>
-           <div className='d-flex align-items-center btn'>
-              <FontAwesomeIcon icon={faAngleLeft} className='pe-1'/> back
+           <div className='d-flex align-items-center btn back-btn'>
+              <Link to="/application/marital-status"><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/> back</Link>
             </div>
             <button className='btn continue-btn' disabled={!validBtn}  >Continue</button>
           </div> 
