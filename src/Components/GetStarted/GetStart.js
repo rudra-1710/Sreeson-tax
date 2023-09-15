@@ -22,8 +22,9 @@ const GetStart = () => {
         </Row>
         <hr className='mt-5'></hr>
         <div className='d-flex justify-content-between'>
-          <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
-            back
+          <div className='d-flex align-items-center btn'>
+            <Link to="/application/whats"><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
+            back</Link>
           </div>
           <Link to="/application/tax-info"><div className='btn continue-btn'>Continue</div></Link>
         </div>
