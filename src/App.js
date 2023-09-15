@@ -18,6 +18,7 @@ import ChangeInResidence from './Components/ChangeInResidence/ChangeInResidence'
 import GetStart from './Components/GetStarted/GetStart';
 import DependantDetails from './Components/DependantsInfo/DependantDetails';
 import ChangeInForm from './Components/ChangeInResidence/ChangeInForm';
+import PerSummary from './Components/PersonalSummery/PerSummary';
 
 
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
           <Route path='get-start' element={<GetStart />} />
           <Route path='dependants-info' element={<DependantDetails />} />
           <Route path ="change-res-yes" element={<ChangeInForm />}/>
+          <Route path="personal-summary" element={<PerSummary />} />
         </Route>
         <Route path='/' element={<Home/>} />
       </Routes>

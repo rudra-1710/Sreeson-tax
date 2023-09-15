@@ -10,8 +10,7 @@ const ChangeInForm = () => {
     const[isMoveYes,setIsMoveYes] = useState(false);
     const [canadaRes,setcanadaRes] = useState(false)
     const [data,setData] = useState(
-        // {move_canada:"",moveCa_date:"",end_canada:"",endCa_date:"",ca_income:"",for_income:""}
-        {}
+        {move_canada:"",moveCa_date:"",end_canada:"",endCa_date:"",ca_income:"",for_income:""}
         )
 
     const moveCanadaHandler =(event)=>{
@@ -57,7 +56,7 @@ const ChangeInForm = () => {
           <h6 className='my-2'>When did you enter? <span>*</span></h6>
           <div className='d-flex '>
             <div>
-        <input type='date' onChange={ isMoveYes && changeDataHandler} required id="caEnter_date"    name='caEnter_date' className='my-2 date-input' />
+        <input type='date' onChange={ isMoveYes && changeDataHandler} required id="caEnter_date"  value={data.moveCa_date}   name='moveCa_date' className='my-2 date-input' />
             </div>
         </div>
         </div>}
@@ -73,7 +72,7 @@ const ChangeInForm = () => {
           <h6 className='my-2'>When did you leave? <span>*</span></h6>
           <div className='d-flex '>
             <div>
-        <input type='date' onChange={canadaRes && changeDataHandler} required id="caEndDate"  name='caEndDate' className='my-2 date-input' />
+        <input type='date' onChange={canadaRes && changeDataHandler} required id="caEndDate" value={data.endCa_date}  name='endCa_date' className='my-2 date-input' />
             </div>
         </div>
         </div>}
@@ -84,10 +83,10 @@ const ChangeInForm = () => {
                 <Form.Label><p className='my-2'>What was your Income from Canadian sources?</p></Form.Label>
                 <Form.Control 
                 onChange={changeDataHandler}
-                name='canada_incone'
+                name='ca_income'
                 type='text'
                 className='date-input-mail'
-                // value={data.ca_income}
+                value={data.ca_income}
                 placeholder='0.00'
                 />
             </Form.Group>
@@ -95,10 +94,10 @@ const ChangeInForm = () => {
                 <Form.Label><p className='my-2'>What was your Income from foreign sources?</p></Form.Label>
                 <Form.Control 
                 onChange={changeDataHandler}
-                name='foreign_income'
+                name='for_income'
                 className='date-input-mail'
                 type='text'
-                // value={data.for_income}
+                value={data.for_income}
                 placeholder='0.00'
                 />
             </Form.Group>

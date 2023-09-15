@@ -10,14 +10,14 @@ const GetStart = () => {
   return (
     <Container>
         <Row>
-            <Col className='d-flex justify-content center align-items-center'>
+            <Col md={12} xl={5} className='d-flex justify-content center align-items-center'>
                <div >
                <h3 className='my-3'><b>Let's build your tax profile</b></h3>
                 <div>Tell us about your years so we can get a picture of your tax situation</div>
                </div>
             </Col>
-            <Col>
-                <img src={gif} className='taxgif' />
+            <Col >
+                <img src={gif} className='taxgif img-fluid' />
             </Col>
         </Row>
         <hr className='mt-5'></hr>
