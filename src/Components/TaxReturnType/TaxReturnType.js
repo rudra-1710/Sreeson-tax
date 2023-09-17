@@ -1,26 +1,44 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import "./TaxReturn.scss"
 import corporateImg from "../../assets/images/comingsoon.jpg"
 import TaxReturnBasicDetails from './TaxReturnBasicDetails'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { getCookie } from '../../utils/services/cookei'
+import { useNavigate } from 'react-router-dom'
+import { postApiCall } from '../../utils/services/api.service'
+import { tax_profile } from '../../utils/services/taxApi'
 
 function TaxReturnType() {
+  const navigate = useNavigate();
+
+  const  [loginUser, setLoginUser] = useState({});
+
+  useEffect(() => {
+    const user = getCookie('userData');
+
+    if (user) {
+      const userInfo = JSON.parse(user);
+      setLoginUser(userInfo);
+    } else {
+      navigate('/login');
+    }
+  })
 
   const taxType = [{
     name: "My self",
     id: "TaxReturnmyself",
-    value: "my_self",
+    value: "Self",
     class: "returnimg myself",
-    component: () => {
-      return (<TaxReturnBasicDetails />)
+    component: (userData) => {
+      return (<TaxReturnBasicDetails  userData={userData}/>)
     }
   },
   {
     name: "Corporate",
     id: "TaxReturnCorporate",
-    value: "corporate",
+    value: "Company",
     class: "returnimg corporate",
     component: () => {
       return (
@@ -40,18 +58,32 @@ function TaxReturnType() {
   {
     name: "Others",
     id: "TaxReturnOthers",
-    value: "others",
+    value: "Others",
     class: "returnimg others",
-    component: () => {
-      return (<TaxReturnBasicDetails />)
+    component: (userData) => {
+      return (<TaxReturnBasicDetails userData={userData}/>)
     }
   }
   ]
 
-  const [basicform, setBasicForm] = useState({})
+  const [basicform, setBasicForm] = useState({});
+  const [userData, setuserData] = useState({});
 
   const TaxtypeHandler = (event) => {
-    setBasicForm(taxType[Number(event.target.value)])
+    event.preventDefault();
+    const profileType = taxType[Number(event.target.value)] 
+    const obj = {
+      ...tax_profile,
+      profile_type: profileType?.value
+    }
+    postApiCall(`user/create/${loginUser?.user_id}`, obj)
+    .then((data) => {
+      setBasicForm(profileType);
+      setuserData(data);
+    })
+    .catch(error => {
+      console.log(error)
+    })
   }
 
 
@@ -71,7 +103,7 @@ function TaxReturnType() {
           })}
         </ul>
         <div>
-          {Object.keys(basicform).length > 0 && basicform.component()}
+          {Object.keys(basicform).length > 0 && basicform.component(userData)}
         </div>
       </div>
     </Container>

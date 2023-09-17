@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {Form, Container} from 'react-bootstrap';
 import "../Login_form/LoginForm.css"
 import "./TaxReturnBasicDetails.scss"
@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
 import { putApiCall } from '../../utils/services/api.service';
+import { getCookie } from '../../utils/services/cookei';
+import { tax_profile } from '../../utils/services/taxApi';
 
 function TaxReturnBasicDetails({user_id}) {
   const navigate = useNavigate();
@@ -13,7 +15,14 @@ function TaxReturnBasicDetails({user_id}) {
   const [first_name, setFirst_name] = useState("");
   const [middle_name, setMiddle_name] = useState("");
   const [last_name, setLast_name] = useState("");
-  const [validBtn,setValidBtn] = useState(false)
+  const [validBtn,setValidBtn] = useState(false);
+  const  [loginUser, setLoginUser] = useState({});
+
+  useEffect(() => {
+    const user = getCookie('userData');
+
+    setLoginUser(JSON.parse(user));
+  })
 
   const handleFirstName = (event) => {
     setFirst_name(event.target.value);
@@ -41,12 +50,13 @@ function TaxReturnBasicDetails({user_id}) {
     }
 
     const user  = {
+      ...tax_profile,
       first_name,
       middle_name,
       last_name
     }
 
-    putApiCall(`user/${user_id}/update`, user).then(res => 
+    putApiCall(`user/${loginUser?._id}/post`, user).then(res => 
       {
 
         if(res) {

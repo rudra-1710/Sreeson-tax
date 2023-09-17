@@ -7,7 +7,7 @@ export const setCookie = (key, value) => {
 
 export const getCookie = (key) => {
     const value = Cookies.get(key)
-    if (value) {
+    if (value !== undefined) {
         return value;
     }
     return false;
