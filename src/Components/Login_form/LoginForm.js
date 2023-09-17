@@ -1,17 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import image from "../../assets/images/sreeson.png";
 import { Nav, Form,  Button } from 'react-bootstrap';
 import "./LoginForm.css"
 import { postApiCall } from '../../utils/services/api.service';
+import { getCookie, setCookie } from '../../utils/services/cookei';
+import { useNavigate } from 'react-router-dom';
 
 const Login_form = () => {
+  const navigate = useNavigate();
     // const [validated, setValidated] = useState(false);
     const[identifier, setIdentifier] = useState("");
     const [password, setPassword] = useState("");
     const [showpass , setShowpass] = useState(true);
     const [validIdentifier, setValidIdentifier] =  useState(false)
-    const [validePass, setValidePass] =  useState(false)
+    const [validePass, setValidePass] =  useState(false);
+
+    useEffect(() => {
+      const userToken = getCookie('token');
+      if(userToken){
+        navigate('/')
+      }
+    })
 
     const showPassword = ()=>{
             setShowpass(showpass=>{
@@ -49,12 +59,14 @@ const Login_form = () => {
       postApiCall('accounts/login', login)
       .then(res => {
         console.log(res)
-        if (res.status === 200) {
+
           console.log(res);
-        }
-        if (res.status ===422) {
-          console.log(res);
-        }
+
+          setCookie('token', res?.access_token);
+          setCookie('userData', JSON.stringify(res?.user_details));
+
+          console.log('Get cookie :: ', getCookie('token'), getCookie('userData'));
+          navigate('/')
       })
       .catch(err => console.log(err));
     };

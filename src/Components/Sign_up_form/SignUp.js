@@ -1,16 +1,17 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useState } from 'react'
 import image from "../../assets/images/sreeson.png";
 import { Nav, Form, Button, InputGroup } from 'react-bootstrap';
 import "./SignUp.css"
 import data from "../../assets/Data/country.json"
 import { postApiCall } from '../../utils/services/api.service';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 const Sign_up = () => {
 
+  const navigate = useNavigate()
   // const [validated, setValidated] = useState(false);
   const [password, setPassword] = useState("");
   const [rePassword, setRepassword] = useState("");
@@ -155,10 +156,14 @@ else{
       console.log(res)
         if (res.status === 200) {
           console.log(res);
+          navigate('/login')
         }
-        if (res.status ===422) {
-          console.log(res);
+        if (res.detail) {
+          navigate('/login')
         }
+
+        navigate('/login')
+
     })
     .catch(error => {
       debugger

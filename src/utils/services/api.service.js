@@ -29,9 +29,7 @@ export const postApiCall = (path, payload) => {
           })
         .then(res => res.json())
         .then(data => {
-          if (data.statusCode === 201) {
-            return resolve(data);
-          }
+          return resolve(data);
         })
         .catch(error => {
           return reject(error);
