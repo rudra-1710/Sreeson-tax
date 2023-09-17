@@ -4,6 +4,7 @@ import "./StatusSingel.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const StatusSingle = () => {
   const [isYes, setIsyes] = useState(false)
@@ -119,7 +120,7 @@ const StatusSingle = () => {
 </div>}
 <hr></hr>
      <div className='d-flex justify-content-between'>
-      <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>back</div>
+      <div className='d-flex align-items-center btn back-btn'><Link ><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>back</Link></div>
       <button className='btn continue-btn' disabled={!valiBtn}>Continue</button>
       </div>
 </form>

@@ -3,6 +3,7 @@ import { Container, Nav } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import "./WhatsNew.scss"
+import { Link } from 'react-router-dom';
 
 const WhatsNew = () => {
   return (
@@ -30,9 +31,9 @@ const WhatsNew = () => {
         </div>
         <hr className='mt-5'></hr>
                   <div className='d-flex justify-content-between'>
-                    <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
-                      back</div>
-                    <button className='btn continue-btn'>Continue</button>
+                    <div className='d-flex align-items-center btn'><Link to="/application/personal-summary"><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
+                      back</Link></div>
+                    <button className='btn continue-btn'><Link to="/application/get-start" className='text-white'>Continue</Link></button>
          </div>
 
     </Container>

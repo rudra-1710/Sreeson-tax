@@ -12,12 +12,8 @@
   :not(.checkbtn-check)+.checkbtn:active {
       border: 0px !important;
   }
+  .checkbtn{
+    --bs-btn-border-color: 0px !important;
+    transition: none !important;
+  }
  
-  // .contact-form{
-  //   margin-left: 20%;
-  // }
-  // @media(max-width:400px){
-  //   .contact-form{
-  //   margin-left: 20px;
-  //   }
-  // }

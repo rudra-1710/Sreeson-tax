@@ -3,10 +3,19 @@ import "./Contact.scss"
 import { Col, Container, Form, Row } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Contact() {
+    const [contact_details,setcontact_details] = useState({out_mail:"",country_add:"",care_of:"",street_add:"",suite:"",po_box:"",rr:"",city:"",province:"",postal_code:"",current_mail:"",email_add:"",phone_num:"",pre_lang:"",curr_prov:"",sel_prov:"",change_mail:"",})
+    const [isOutside,setisOutside] = useState(false)
+    const [isSameProvince, setisSameProvince]= useState(false)
+    const[isMailChange,setisMailChange]= useState(false)
+    const[islive,setislive]= useState(true)
+    const [check,setcheck] = useState(false)
+    const [validBtn, setvalidBtn ]= useState(false)
     const provin = ["Alberta","British Columbia", "Manitoba","New Brunswick","Newfoundland and Labrador","Northwest Territories","Nova Scotia","Nunavut","Ontario","Prince Edward Island","Québec","Saskatchewan","Yukon"]
+   
+    const conLink= useNavigate()
     const country = [ 
         {"name": "Afghanistan", "code": "AF"}, 
         {"name": "land Islands", "code": "AX"}, 
@@ -256,61 +265,79 @@ function Contact() {
     const mailForm = [
         {
             label:"Care of",
-            type:"text"
+            type:"text",
+            value:contact_details.care_of,
+            name:"care_of"
         },
         {
             label:"Street Address",
-            type:"text"
+            type:"text",
+            value:contact_details.street_add,
+            name:"street_add"
         },
         {
             label:"Suite/Apt/unit",
-            type:"text"
+            type:"text",
+            value:contact_details.suite,
+            name:"suite"
         },
         {
             label:"PO Box",
-            type:"text"
+            type:"text",
+            value:contact_details.po_box,
+            name:"po_box"
         },{
             label:"RR",
-            type:"text"
+            type:"text",
+            value:contact_details.rr,
+            name:"rr"
         },
         {
             label:"City",
-            type:"text"
+            type:"text",
+            value:contact_details.city,
+            name:"city"
         },
         {
             label:"Province",
-            type:"text"
+            type:"text",
+            value:contact_details.province,
+            name:"province"
         },
         {
             label:"Postal Code",
-            type:"text"
+            type:"text",
+            value:contact_details.postal_code,
+            name:"postal_code"
         },
     ]
-    const [isOutside,setisOutside] = useState(false)
-    const [isSameProvince, setisSameProvince]= useState(false)
-    const[isMailChange,setisMailChange]= useState(false)
-    const[islive,setislive]= useState(true)
-    const [check,setcheck] = useState(false)
-    const [validBtn, setvalidBtn ]= useState(false)
+    
     const mailHandler=(event)=>{
         if (event.target.value === "Yes"){
             setisOutside(true)
+            contact_details.out_mail = "Yes"
         }else{
             setisOutside(false)
+            contact_details.out_mail = "No"
         }
     }
     const mailaddress = (event)=>{
         if(event.target.value==="No"){
             setisSameProvince(true)
+           contact_details.curr_prov="No"
         }else{
             setisSameProvince(false)
+            contact_details.curr_prov="No"
+            
         }
     }
     const mailChangeHandler =(event)=>{
         if(event.target.value==="Yes"){
             setisMailChange(true)
+            contact_details.change_mail = "Yes"
         }else{
             setisMailChange(false)
+            contact_details.change_mail = "No"
         }
     }
     const mailAddressHandler = (event)=>{
@@ -318,10 +345,15 @@ function Contact() {
         if (event.target.checked){
             setislive(false)
             setcheck(false)
+            contact_details.current_mail= true
         }else {
             setvalidBtn(false)
             setislive(true)
+            contact_details.current_mail= true
         }
+    }
+    const con_details = (event)=>{
+        setcontact_details({...contact_details,[event.target.name]:event.target.value})
     }
     const handleSubmit = (event) => {
         const form = event.currentTarget;
@@ -332,14 +364,15 @@ function Contact() {
         }
         setcheck(true)
         setvalidBtn(true)
-        console.log(event)
+        console.log(contact_details)
         // setValidated(true);
       };
+
   return (
     <Container>
         <h5 className='text-center'>Let's get your Contact info</h5>
         <div >
-                <Form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div className='contact-form'>
                     <div>
                 <label className='my-2'><p><b>Is your mailing adress outside Canada?</b></p></label><br />
@@ -350,28 +383,29 @@ function Contact() {
             </div>
             <div>
             {isOutside && <p className='my-4'>If your mailing adress is outside of Canada, you won't be abel to file your return using CRA's NETFILE service.</p>}
-            </div>
+            </div >
+         
                     <label for="country" className='my-2'><p><b>Is your countrying adress outside Canada?</b></p></label><br />
-                <select id="country" required name='country' className='my-2 date-input-mail' >
+                <select id="country" required  onChange={con_details} name="country_add"  className='my-2 date-input-mail' >
                 <option value="" hidden>--select--</option>
-                {country.map((name,index)=>{
+                {country.map((prov,index)=>{
                     return(
-                        <option value={name.code} key={index}>{name.name}</option>
+                        <option value={prov.code}  key={index}>{prov.name}</option>
                     )
                 })}
                 </select>
-                
+
             <div>
             <p><b>What's your mailing address?</b></p>
             <Row>
                     {mailForm.map(data=>{
                       return( 
                         <Col>
-                             <Form.Group  md="4" className='my-4' controlId="validationCustom01" key={data.label}>
+                             <Form.Group  md="4" className='my-4' onChange={con_details} controlId="validationCustom01" key={data.label}>
                         <Form.Label>
                             <p>{data.label}</p>
                         </Form.Label>
-                        <Form.Control required type={data.type} className='my-1 date-input-mail'  />
+                        <Form.Control required type={data.type} name={data.name} value={data.value} className='my-1 date-input-mail'  />
                     </Form.Group>
                         </Col>
                       )
@@ -381,32 +415,33 @@ function Contact() {
                     </div>
                    <div className='d-flex align-items-center'>
                    <input type="checkbox" name="mailaddress" id="mailaddress" className='m-1' onClick={mailAddressHandler}/>
-                <label for="mailaddress"> <p>The mailing address above is where Icurrently live</p></label>
+                <label for="mailaddress"> <p>The mailing address above is where currently live</p></label>
                    </div>
                     <Row>
                         <Col>
-                    <Form.Group  md="4" className='my-4' controlId="validationCustom01" >
+                    <Form.Group  md="4" className='my-4' onChange={con_details} controlId="validationCustom01" >
                         <Form.Label>
                             <p>Hemanth's email adress</p>
                         </Form.Label>
-                        <Form.Control required type="email" className='my-1 date-input-mail'  />
+                        <Form.Control required type="email" name="email_add" value={contact_details.email_add} className='my-1 date-input-mail'  />
                     </Form.Group>
                     </Col>
                     <Col>
-                    <Form.Group  md="4" className='my-4' controlId="validationCustom01">
+                    <Form.Group  md="4" className='my-4' onChange={con_details} controlId="validationCustom01">
                         <Form.Label>
                             <p>Hemanth's phone number</p>
                         </Form.Label>
-                        <Form.Control required type="number" className='my-1 date-input-mail' />
+                        <Form.Control required type="number" value={contact_details.phone_num} name="phone_num" className='my-1 date-input-mail' />
                     </Form.Group>
                     </Col>
                     
                     </Row>
-                    <div><label for="language" className='my-2'><p>Preferred language<span className='text-danger'>*</span></p></label><br />
-                <select id="language" name='language' className='my-2 date-input-mail' >
-                <option value="En">English</option>
-                <option value="Frc">France</option>
-                <option value="Chi">Chainess</option>
+                    <div><label for="pre_lang"  className='my-2'><p>Preferred language<span className='text-danger'>*</span></p></label><br />
+                <select id="pre_lang" required name='pre_lang' onChange={con_details} className='my-2 date-input-mail' >
+                 <option value="" hidden>--select--</option>   
+                <option value="English">English</option>
+                <option value="France" >France</option>
+                <option value="Chainess" >Chainess</option>
                 </select></div>
                {islive && <div className='my-3' onChange={mailaddress}>
                 <p className='mb-2'>Is your current province of residence the same as yours mailing adress above?</p>
@@ -420,7 +455,7 @@ function Contact() {
                 {isSameProvince && islive &&
                     <div>
                         <label for="territory" className='my-2'><p>Which province/territory do you currectly live?</p></label><br />
-                            <select id="territory" required name='territory' className='my-2 date-input-mail' >
+                            <select id="territory" required name='sel_prov'  onChange={con_details} className='my-2 date-input-mail' >
                                 <option value="" hidden>--Select--</option>
                                 {provin.map((name,index)=>{
                                     return(<option key={index} value={name}>{name}</option>)
@@ -449,11 +484,15 @@ function Contact() {
                 </button>
                 <hr className='mt-5'></hr>
                   <div className='d-flex justify-content-between'>
-                    <div className='d-flex align-items-center btn'><FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
-                      back</div>
+                    <div className='d-flex align-items-center btn back-btn'>
+                        <Link>
+                        <FontAwesomeIcon icon={faAngleLeft} className='pe-1'/>
+                         back
+                        </Link>
+                    </div>
                     <button className='btn continue-btn' hidden={!validBtn}>continue</button>
                   </div>
-                </Form>
+                </form>
                 </div>
             
     </Container>
